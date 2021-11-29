@@ -31,7 +31,7 @@ namespace LaTiendaIs2021.DatosV1.Migrations
             context.Productoes.AddOrUpdate(x => x.Id,
                 new Producto() { Id=1, Codigo = 111, Descripcion = "Remeras",
                     CostoSinIva = 100,
-                    MargenGanancia = (decimal?)0.3, PorcentajeIva = (decimal?)0.21,
+                    MargenGanancia = (decimal)0.3, PorcentajeIva = (decimal)0.21,
                     //PrecioFinal = (decimal?)500.0, MarcaId = 1, RubroId = 1
                     //
                     },
@@ -41,8 +41,8 @@ namespace LaTiendaIs2021.DatosV1.Migrations
                     Codigo = 222,
                     Descripcion = "Pantalones",
                     CostoSinIva = 200,
-                    MargenGanancia = (decimal?)0.3,
-                    PorcentajeIva = (decimal?)0.21,
+                    MargenGanancia = (decimal)0.3,
+                    PorcentajeIva = (decimal)0.21,
                   //  PrecioFinal = (decimal?)600.0,
                     MarcaId = 1,
                     RubroId = 1

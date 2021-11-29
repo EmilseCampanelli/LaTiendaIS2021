@@ -10,7 +10,7 @@ namespace LaTiendaIS2021.Dominio.Modelo
     {
         public int id { get; set; }
         public int? cantidad { get; set; }
-        public decimal? precio => CalcularSubtotal();
+        public decimal? precio => cantidad * Producto.PrecioVenta;
         
         public int ProductoId { get; set; }
         public int VentaId { get; set; }
@@ -29,7 +29,7 @@ namespace LaTiendaIS2021.Dominio.Modelo
 
         public decimal? CalcularSubtotal()
         {
-            return cantidad * Producto.PrecioFinal;
+            return cantidad * Producto.PrecioVenta;
            
         }
 

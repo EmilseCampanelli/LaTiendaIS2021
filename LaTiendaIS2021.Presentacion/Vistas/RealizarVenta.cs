@@ -1,5 +1,6 @@
 ﻿using LaTiendaIS2021.Dominio.Modelo;
 using LaTiendaIS2021.Presentacion.Interfaces;
+using LaTiendaIS2021.Presentacion;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,20 +16,24 @@ using System.Windows.Forms;
 
 namespace LaTiendaIS2021.Presentacion.Vistas
 {
-    public partial class RealizarVenta : Form
+    public partial class RealizarVenta : Form, IVistaRegistrarVenta
     {
-        IVistaAgregarCliente Cliente;
-        public RealizarVenta()
+        PresentadorPrincipal _presentador;
+
+        public RealizarVenta(PresentadorPrincipal presentador)
         {
+            _presentador = presentador;
+            _presentador.setPresentador(this);
             InitializeComponent();
-            Cliente = new VistaAgregarCliente();
+            
         }
 
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
-            Cliente.Mostrar();
+            //Cliente.Mostrar();
+            _presentador.AgregarVistaCliente();
         }
-
+        
         private void RealizarVenta_Load(object sender, EventArgs e)
         {
 
@@ -40,23 +45,32 @@ namespace LaTiendaIS2021.Presentacion.Vistas
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            int codigo = int.Parse(txtBuscarProducto.Text);
-            // Producto producto = new Producto();
-            string url = $"https://localhost:44332/api/Productoes/{codigo}";
-            string res_Producto = await GetHttpProducto(codigo);
-            var producto = JsonConvert.DeserializeObject<Producto>(res_Producto);
-            //Inicializar Color Talle 
-            productoBindingSource.DataSource = producto;
+           int codigo = int.Parse(txtBuscarProducto.Text);
+            Listar(codigo);
         }
 
 
-        #region Api Web
-        private async Task<string> GetHttpProducto(int codigo)
+        #region Interface
+
+        public async void Listar(int codigo)
         {
-            WebRequest oRequest = WebRequest.Create($"https://localhost:44332/api/Productoes/{codigo}");
-            WebResponse oResponse = oRequest.GetResponse();
-            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
-            return await sr.ReadToEndAsync();
+            var source = new BindingSource();
+            var lst = await _presentador.MostrarProductos();
+            source.DataSource = lst;
+            dgvLV.DataSource = source;
+
+            DataGridViewComboBoxColumn cbxTalle = new DataGridViewComboBoxColumn();
+            cbxTalle = (DataGridViewComboBoxColumn)dgvLV.Columns["Talle"];
+            var lst1 = await _presentador.GetTalle();
+            foreach (var i in lst1)
+            {
+                cbxTalle.Items.Add(i.Descripcion);
+            }
+            //cbxTalle.DisplayMember = "Descripcion";
+            //cbxTalle.ValueMember = "Id";
+           
+
+           
         }
 
 

@@ -40,7 +40,7 @@ namespace LaTiendaIS2021.Test
             lineaVenta = RepositorioTest.Datos.BuscarLV(1);
 
 
-            var precio = lineaVenta.Producto.PrecioFinal * lineaVenta.cantidad;
+            var precio = lineaVenta.Producto.PrecioVenta * lineaVenta.cantidad;
 
             //Ejecucion
             var calculo = lineaVenta.CalcularSubtotal();

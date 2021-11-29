@@ -60,6 +60,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -170,30 +171,34 @@
     <Compile Include="Controllers\ProductoesController.cs" />
     <Compile Include="Controllers\PuntoVentasController.cs" />
     <Compile Include="Controllers\RubroesController.cs" />
+    <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Controllers\SucursalsController.cs" />
     <Compile Include="Controllers\TallesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Controllers\VentasController.cs" />
+    <Compile Include="Controllers\viewProductosController.cs" />
     <Compile Include="Data\LaTiendaIs2021DatosV1Context.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202111092200072_Initial.cs" />
-    <Compile Include="Migrations\202111092200072_Initial.Designer.cs">
-      <DependentUpon>202111092200072_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202111262150336_v1.2.cs" />
+    <Compile Include="Migrations\202111262150336_v1.2.Designer.cs">
+      <DependentUpon>202111262150336_v1.2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202111101803352_v2.cs" />
-    <Compile Include="Migrations\202111101803352_v2.Designer.cs">
-      <DependentUpon>202111101803352_v2.cs</DependentUpon>
+    <Compile Include="Migrations\202111262210433_v1.3.cs" />
+    <Compile Include="Migrations\202111262210433_v1.3.Designer.cs">
+      <DependentUpon>202111262210433_v1.3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202111101937269_v3.cs" />
-    <Compile Include="Migrations\202111101937269_v3.Designer.cs">
-      <DependentUpon>202111101937269_v3.cs</DependentUpon>
+    <Compile Include="Migrations\202111272101554_v1.4.cs" />
+    <Compile Include="Migrations\202111272101554_v1.4.Designer.cs">
+      <DependentUpon>202111272101554_v1.4.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202111101950339_v4.cs" />
-    <Compile Include="Migrations\202111101950339_v4.Designer.cs">
-      <DependentUpon>202111101950339_v4.cs</DependentUpon>
+    <Compile Include="Migrations\202111272237249_v2.cs" />
+    <Compile Include="Migrations\202111272237249_v2.Designer.cs">
+      <DependentUpon>202111272237249_v2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ConsultaApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -249,7 +254,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -287,17 +291,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202111092200072_Initial.resx">
-      <DependentUpon>202111092200072_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111262150336_v1.2.resx">
+      <DependentUpon>202111262150336_v1.2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111101803352_v2.resx">
-      <DependentUpon>202111101803352_v2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111262210433_v1.3.resx">
+      <DependentUpon>202111262210433_v1.3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111101937269_v3.resx">
-      <DependentUpon>202111101937269_v3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111272101554_v1.4.resx">
+      <DependentUpon>202111272101554_v1.4.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111101950339_v4.resx">
-      <DependentUpon>202111101950339_v4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111272237249_v2.resx">
+      <DependentUpon>202111272237249_v2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

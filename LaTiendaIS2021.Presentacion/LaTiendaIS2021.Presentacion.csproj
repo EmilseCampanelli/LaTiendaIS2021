@@ -38,6 +38,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,6 +51,12 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions, Version=5.11.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.10\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.11.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.10\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form1.cs">
@@ -57,6 +66,11 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IVistaAgregarCliente.cs" />
+    <Compile Include="Interfaces\IVistaAgregarProducto.cs" />
+    <Compile Include="Interfaces\IVistaListaCliente.cs" />
+    <Compile Include="Interfaces\IVistaListaProducto.cs" />
+    <Compile Include="Interfaces\IVistaRegistrarVenta.cs" />
+    <Compile Include="Presentacion\PresentadorPrincipal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vistas\RealizarVenta.cs">
@@ -76,6 +90,18 @@
     </Compile>
     <Compile Include="Vistas\VistaAgregarProducto.Designer.cs">
       <DependentUpon>VistaAgregarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\VistaListaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\VistaListaCliente.Designer.cs">
+      <DependentUpon>VistaListaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\VistaListaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\VistaListaProducto.Designer.cs">
+      <DependentUpon>VistaListaProducto.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -97,6 +123,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\VistaAgregarProducto.resx">
       <DependentUpon>VistaAgregarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\VistaListaCliente.resx">
+      <DependentUpon>VistaListaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\VistaListaProducto.resx">
+      <DependentUpon>VistaListaProducto.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\LaTiendaIS2021.Dominio.Modelo.Cliente.datasource" />

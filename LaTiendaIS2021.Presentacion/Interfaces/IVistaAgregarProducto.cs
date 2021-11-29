@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace LaTiendaIS2021.Presentacion.Interfaces
 {
-    public interface IVistaAgregarCliente
+    public interface IVistaAgregarProducto
     {
         void SetPresentador(PresentadorPrincipal presentador);
+        void Mostrar(Producto producto = null);
         void Agregar();
-        void Mostrar(Cliente cliente=null);
+
     }
 }

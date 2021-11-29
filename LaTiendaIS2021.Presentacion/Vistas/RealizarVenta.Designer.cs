@@ -29,7 +29,6 @@ namespace LaTiendaIS2021.Presentacion.Vistas
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.btnConfirmarVenta = new System.Windows.Forms.Button();
             this.abajo = new System.Windows.Forms.Panel();
             this.btnCancelarVenta = new System.Windows.Forms.Button();
@@ -55,16 +54,12 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.button1 = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.tableLineaVenta = new System.Windows.Forms.DataGridView();
-            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtBuscarProducto = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioFinalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvLV = new System.Windows.Forms.DataGridView();
             this.Talles = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Colores = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtBuscarProducto = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.abajo.SuspendLayout();
             this.panel3.SuspendLayout();
             this.arriba.SuspendLayout();
@@ -74,8 +69,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.principal.SuspendLayout();
             this.medio.SuspendLayout();
             this.medioMedio.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableLineaVenta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLV)).BeginInit();
             this.SuspendLayout();
             // 
             // btnConfirmarVenta
@@ -84,10 +78,9 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.btnConfirmarVenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnConfirmarVenta.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnConfirmarVenta.Font = new System.Drawing.Font("Showcard Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmarVenta.Location = new System.Drawing.Point(841, 0);
-            this.btnConfirmarVenta.Margin = new System.Windows.Forms.Padding(4);
+            this.btnConfirmarVenta.Location = new System.Drawing.Point(631, 0);
             this.btnConfirmarVenta.Name = "btnConfirmarVenta";
-            this.btnConfirmarVenta.Size = new System.Drawing.Size(193, 60);
+            this.btnConfirmarVenta.Size = new System.Drawing.Size(145, 49);
             this.btnConfirmarVenta.TabIndex = 0;
             this.btnConfirmarVenta.Text = "Confirmar";
             this.btnConfirmarVenta.UseVisualStyleBackColor = false;
@@ -98,10 +91,9 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.abajo.Controls.Add(this.btnCancelarVenta);
             this.abajo.Controls.Add(this.btnConfirmarVenta);
             this.abajo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.abajo.Location = new System.Drawing.Point(0, 564);
-            this.abajo.Margin = new System.Windows.Forms.Padding(4);
+            this.abajo.Location = new System.Drawing.Point(0, 458);
             this.abajo.Name = "abajo";
-            this.abajo.Size = new System.Drawing.Size(1034, 60);
+            this.abajo.Size = new System.Drawing.Size(776, 49);
             this.abajo.TabIndex = 2;
             // 
             // btnCancelarVenta
@@ -110,10 +102,9 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.btnCancelarVenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancelarVenta.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnCancelarVenta.Font = new System.Drawing.Font("Showcard Gothic", 15.75F);
-            this.btnCancelarVenta.Location = new System.Drawing.Point(648, 0);
-            this.btnCancelarVenta.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelarVenta.Location = new System.Drawing.Point(486, 0);
             this.btnCancelarVenta.Name = "btnCancelarVenta";
-            this.btnCancelarVenta.Size = new System.Drawing.Size(193, 60);
+            this.btnCancelarVenta.Size = new System.Drawing.Size(145, 49);
             this.btnCancelarVenta.TabIndex = 1;
             this.btnCancelarVenta.Text = "Cancelar";
             this.btnCancelarVenta.UseVisualStyleBackColor = false;
@@ -122,10 +113,9 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             // 
             this.lblPuntoVenta.AutoSize = true;
             this.lblPuntoVenta.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPuntoVenta.Location = new System.Drawing.Point(785, 11);
-            this.lblPuntoVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPuntoVenta.Location = new System.Drawing.Point(589, 9);
             this.lblPuntoVenta.Name = "lblPuntoVenta";
-            this.lblPuntoVenta.Size = new System.Drawing.Size(111, 18);
+            this.lblPuntoVenta.Size = new System.Drawing.Size(93, 14);
             this.lblPuntoVenta.TabIndex = 2;
             this.lblPuntoVenta.Text = "Punto de Venta: ";
             // 
@@ -133,10 +123,9 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(834, 36);
-            this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUsuario.Location = new System.Drawing.Point(626, 29);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(62, 18);
+            this.lblUsuario.Size = new System.Drawing.Size(53, 14);
             this.lblUsuario.TabIndex = 1;
             this.lblUsuario.Text = "Usuario: ";
             // 
@@ -145,10 +134,9 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(47, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(35, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(322, 48);
+            this.label1.Size = new System.Drawing.Size(259, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "Realizar Venta";
             // 
@@ -156,10 +144,9 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             // 
             this.btnVolver.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnVolver.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnVolver.Location = new System.Drawing.Point(946, 0);
-            this.btnVolver.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVolver.Location = new System.Drawing.Point(710, 0);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(88, 69);
+            this.btnVolver.Size = new System.Drawing.Size(66, 56);
             this.btnVolver.TabIndex = 1;
             this.btnVolver.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnVolver.UseVisualStyleBackColor = true;
@@ -173,9 +160,8 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(971, 69);
+            this.panel3.Size = new System.Drawing.Size(728, 56);
             this.panel3.TabIndex = 0;
             // 
             // arriba
@@ -186,17 +172,15 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.arriba.Controls.Add(this.panel3);
             this.arriba.Dock = System.Windows.Forms.DockStyle.Top;
             this.arriba.Location = new System.Drawing.Point(0, 0);
-            this.arriba.Margin = new System.Windows.Forms.Padding(4);
             this.arriba.Name = "arriba";
-            this.arriba.Size = new System.Drawing.Size(1034, 69);
+            this.arriba.Size = new System.Drawing.Size(776, 56);
             this.arriba.TabIndex = 0;
             // 
             // btnAgregarCliente
             // 
-            this.btnAgregarCliente.Location = new System.Drawing.Point(109, 11);
-            this.btnAgregarCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregarCliente.Location = new System.Drawing.Point(82, 9);
             this.btnAgregarCliente.Name = "btnAgregarCliente";
-            this.btnAgregarCliente.Size = new System.Drawing.Size(72, 53);
+            this.btnAgregarCliente.Size = new System.Drawing.Size(54, 43);
             this.btnAgregarCliente.TabIndex = 9;
             this.btnAgregarCliente.UseVisualStyleBackColor = true;
             this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
@@ -205,10 +189,9 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 20);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(3, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 29);
+            this.label3.Size = new System.Drawing.Size(73, 24);
             this.label3.TabIndex = 8;
             this.label3.Text = "Cliente ";
             // 
@@ -219,29 +202,26 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.arribaMedio.Controls.Add(this.label3);
             this.arribaMedio.Dock = System.Windows.Forms.DockStyle.Top;
             this.arribaMedio.Location = new System.Drawing.Point(0, 0);
-            this.arribaMedio.Margin = new System.Windows.Forms.Padding(4);
             this.arribaMedio.Name = "arribaMedio";
-            this.arribaMedio.Size = new System.Drawing.Size(1034, 72);
+            this.arribaMedio.Size = new System.Drawing.Size(776, 59);
             this.arribaMedio.TabIndex = 9;
             // 
             // lblTipoDePago
             // 
             this.lblTipoDePago.AutoSize = true;
             this.lblTipoDePago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoDePago.Location = new System.Drawing.Point(109, 16);
-            this.lblTipoDePago.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTipoDePago.Location = new System.Drawing.Point(82, 13);
             this.lblTipoDePago.Name = "lblTipoDePago";
-            this.lblTipoDePago.Size = new System.Drawing.Size(68, 17);
+            this.lblTipoDePago.Size = new System.Drawing.Size(54, 13);
             this.lblTipoDePago.TabIndex = 14;
             this.lblTipoDePago.Text = "Contado";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 16);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(7, 13);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 17);
+            this.label5.Size = new System.Drawing.Size(76, 13);
             this.label5.TabIndex = 13;
             this.label5.Text = "Tipo de pago: ";
             // 
@@ -252,18 +232,16 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.panel1.Controls.Add(this.txtTotal);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 372);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(0, 301);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1032, 49);
+            this.panel1.Size = new System.Drawing.Size(774, 40);
             this.panel1.TabIndex = 10;
             // 
             // btnTarjeta
             // 
-            this.btnTarjeta.Location = new System.Drawing.Point(891, 1);
-            this.btnTarjeta.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTarjeta.Location = new System.Drawing.Point(668, 1);
             this.btnTarjeta.Name = "btnTarjeta";
-            this.btnTarjeta.Size = new System.Drawing.Size(100, 46);
+            this.btnTarjeta.Size = new System.Drawing.Size(75, 37);
             this.btnTarjeta.TabIndex = 13;
             this.btnTarjeta.UseVisualStyleBackColor = true;
             // 
@@ -273,28 +251,25 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.panel2.Controls.Add(this.label5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(193, 49);
+            this.panel2.Size = new System.Drawing.Size(145, 40);
             this.panel2.TabIndex = 14;
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(332, 12);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTotal.Location = new System.Drawing.Point(249, 10);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(120, 22);
+            this.txtTotal.Size = new System.Drawing.Size(91, 20);
             this.txtTotal.TabIndex = 10;
             this.txtTotal.Text = "$";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(200, 16);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(150, 13);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 17);
+            this.label4.Size = new System.Drawing.Size(93, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "Total de la venta: ";
             // 
@@ -307,9 +282,8 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.principal.Controls.Add(this.abajo);
             this.principal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.principal.Location = new System.Drawing.Point(0, 0);
-            this.principal.Margin = new System.Windows.Forms.Padding(4);
             this.principal.Name = "principal";
-            this.principal.Size = new System.Drawing.Size(1034, 624);
+            this.principal.Size = new System.Drawing.Size(776, 507);
             this.principal.TabIndex = 2;
             // 
             // medio
@@ -317,10 +291,9 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.medio.Controls.Add(this.medioMedio);
             this.medio.Controls.Add(this.arribaMedio);
             this.medio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.medio.Location = new System.Drawing.Point(0, 69);
-            this.medio.Margin = new System.Windows.Forms.Padding(4);
+            this.medio.Location = new System.Drawing.Point(0, 56);
             this.medio.Name = "medio";
-            this.medio.Size = new System.Drawing.Size(1034, 495);
+            this.medio.Size = new System.Drawing.Size(776, 402);
             this.medio.TabIndex = 1;
             // 
             // medioMedio
@@ -329,22 +302,22 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.medioMedio.Controls.Add(this.button1);
             this.medioMedio.Controls.Add(this.btnBorrar);
             this.medioMedio.Controls.Add(this.btnAgregar);
-            this.medioMedio.Controls.Add(this.tableLineaVenta);
+            this.medioMedio.Controls.Add(this.dgvLV);
             this.medioMedio.Controls.Add(this.txtBuscarProducto);
             this.medioMedio.Controls.Add(this.label2);
             this.medioMedio.Controls.Add(this.panel1);
             this.medioMedio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.medioMedio.Location = new System.Drawing.Point(0, 72);
-            this.medioMedio.Margin = new System.Windows.Forms.Padding(4);
+            this.medioMedio.Location = new System.Drawing.Point(0, 59);
             this.medioMedio.Name = "medioMedio";
-            this.medioMedio.Size = new System.Drawing.Size(1034, 423);
+            this.medioMedio.Size = new System.Drawing.Size(776, 343);
             this.medioMedio.TabIndex = 8;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(587, 5);
+            this.button1.Location = new System.Drawing.Point(440, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(31, 25);
+            this.button1.Size = new System.Drawing.Size(23, 20);
             this.button1.TabIndex = 13;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -352,89 +325,38 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             // 
             // btnBorrar
             // 
-            this.btnBorrar.Location = new System.Drawing.Point(935, 125);
+            this.btnBorrar.Location = new System.Drawing.Point(701, 102);
+            this.btnBorrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(66, 58);
+            this.btnBorrar.Size = new System.Drawing.Size(50, 47);
             this.btnBorrar.TabIndex = 12;
             this.btnBorrar.Text = "button1";
             this.btnBorrar.UseVisualStyleBackColor = true;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(935, 37);
+            this.btnAgregar.Location = new System.Drawing.Point(701, 30);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(66, 58);
+            this.btnAgregar.Size = new System.Drawing.Size(50, 47);
             this.btnAgregar.TabIndex = 11;
             this.btnAgregar.Text = "button1";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // tableLineaVenta
+            // dgvLV
             // 
-            this.tableLineaVenta.AllowUserToOrderColumns = true;
-            this.tableLineaVenta.AutoGenerateColumns = false;
-            this.tableLineaVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableLineaVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codigoDataGridViewTextBoxColumn,
-            this.descripcionDataGridViewTextBoxColumn,
-            this.precioFinalDataGridViewTextBoxColumn,
+            this.dgvLV.AllowUserToOrderColumns = true;
+            this.dgvLV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Talles,
             this.Colores,
             this.Cantidad});
-            this.tableLineaVenta.DataSource = this.productoBindingSource;
-            this.tableLineaVenta.Location = new System.Drawing.Point(-1, 37);
-            this.tableLineaVenta.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLineaVenta.Name = "tableLineaVenta";
-            this.tableLineaVenta.RowHeadersWidth = 51;
-            this.tableLineaVenta.Size = new System.Drawing.Size(908, 232);
-            this.tableLineaVenta.TabIndex = 6;
-            // 
-            // productoBindingSource
-            // 
-            this.productoBindingSource.DataSource = typeof(LaTiendaIS2021.Dominio.Modelo.Producto);
-            // 
-            // txtBuscarProducto
-            // 
-            this.txtBuscarProducto.Location = new System.Drawing.Point(301, 5);
-            this.txtBuscarProducto.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBuscarProducto.Name = "txtBuscarProducto";
-            this.txtBuscarProducto.Size = new System.Drawing.Size(268, 22);
-            this.txtBuscarProducto.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(28, 5);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(265, 29);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "CODIGO PRODUCTO: ";
-            // 
-            // codigoDataGridViewTextBoxColumn
-            // 
-            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
-            this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
-            this.codigoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            this.descripcionDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // precioFinalDataGridViewTextBoxColumn
-            // 
-            this.precioFinalDataGridViewTextBoxColumn.DataPropertyName = "PrecioFinal";
-            this.precioFinalDataGridViewTextBoxColumn.HeaderText = "PrecioFinal";
-            this.precioFinalDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.precioFinalDataGridViewTextBoxColumn.Name = "precioFinalDataGridViewTextBoxColumn";
-            this.precioFinalDataGridViewTextBoxColumn.Width = 125;
+            this.dgvLV.Location = new System.Drawing.Point(3, 29);
+            this.dgvLV.Name = "dgvLV";
+            this.dgvLV.RowHeadersWidth = 51;
+            this.dgvLV.Size = new System.Drawing.Size(693, 188);
+            this.dgvLV.TabIndex = 6;
             // 
             // Talles
             // 
@@ -461,12 +383,30 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.Cantidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Cantidad.Width = 103;
             // 
+            // txtBuscarProducto
+            // 
+            this.txtBuscarProducto.Location = new System.Drawing.Point(226, 4);
+            this.txtBuscarProducto.Name = "txtBuscarProducto";
+            this.txtBuscarProducto.Size = new System.Drawing.Size(202, 20);
+            this.txtBuscarProducto.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(21, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(205, 24);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "CODIGO PRODUCTO: ";
+            // 
             // RealizarVenta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1034, 624);
+            this.ClientSize = new System.Drawing.Size(776, 507);
             this.Controls.Add(this.principal);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "RealizarVenta";
             this.Text = "RealizarVenta";
             this.Load += new System.EventHandler(this.RealizarVenta_Load);
@@ -484,8 +424,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.medio.ResumeLayout(false);
             this.medioMedio.ResumeLayout(false);
             this.medioMedio.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableLineaVenta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLV)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -514,15 +453,12 @@ namespace LaTiendaIS2021.Presentacion.Vistas
         private System.Windows.Forms.Panel principal;
         private System.Windows.Forms.Panel medio;
         private System.Windows.Forms.Panel medioMedio;
-        private System.Windows.Forms.DataGridView tableLineaVenta;
+        private System.Windows.Forms.DataGridView dgvLV;
         private System.Windows.Forms.TextBox txtBuscarProducto;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.BindingSource productoBindingSource;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioFinalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn Talles;
         private System.Windows.Forms.DataGridViewComboBoxColumn Colores;

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contratos\IDatosCliente.cs" />
+    <Compile Include="Modelo-View\viewProductos.cs" />
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\Color.cs" />
     <Compile Include="Modelo\CondicionTributaria.cs" />

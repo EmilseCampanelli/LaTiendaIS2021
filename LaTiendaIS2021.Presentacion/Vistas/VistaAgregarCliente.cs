@@ -1,5 +1,6 @@
 ﻿using LaTiendaIS2021.Dominio.Modelo;
 using LaTiendaIS2021.Presentacion.Interfaces;
+using LaTiendaIS2021.Presentacion;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -19,20 +20,25 @@ namespace LaTiendaIS2021.Presentacion.Vistas
     public partial class VistaAgregarCliente : Form, IVistaAgregarCliente
     {
         List<CondicionTributaria> ListCondicion = new List<CondicionTributaria>();
+        PresentadorPrincipal _presentador;
         public VistaAgregarCliente()
         {
             InitializeComponent();
         }
 
-        private async void VistaAgregarCliente_Load(object sender, EventArgs e)
+        private void VistaAgregarCliente_Load(object sender, EventArgs e)
         {
+        }
+
+        public async void SetPresentador(PresentadorPrincipal presentador)
+        {
+
+            _presentador = presentador;
+            ListCondicion = await _presentador.GetCondicionAsync();
+            bsCliente.DataSource = _presentador.NuevoCliente();
+
             List<string> condicion = new List<string>();
-            bsCliente.DataSource = new Cliente();
-
-            string res_Condicion = await GetHttpCondicion();
-            ListCondicion = JsonConvert.DeserializeObject<List<CondicionTributaria>>(res_Condicion);
-
-            foreach(var i in ListCondicion)
+            foreach (var i in ListCondicion)
             {
                 condicion.Add(i.Descripcion);
             }
@@ -46,14 +52,16 @@ namespace LaTiendaIS2021.Presentacion.Vistas
 
         private void btnGuardarCliente_Click(object sender, EventArgs e)
         {
-            string url = "https://localhost:44332/api/Clientes";
+           
             var oCliente = bsCliente.DataSource as Cliente;
             oCliente.CondicionTributariaId = DevolverIdCondicion(comboBox1.Text);
 
-            string result = Send<Cliente>(url, oCliente, "POST");
+            _presentador.AgregarCliente(oCliente);
+
 
             MessageBox.Show("El Cliente se Guardo con Exito");
             bsCliente.Clear();
+            Salir();
 
         }
         public int DevolverIdCondicion(string descripcion)
@@ -64,61 +72,6 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             return vs;
         }
 
-        #region Web Api
-        private async Task<string> GetHttpCondicion()
-        {
-            WebRequest oRequest = WebRequest.Create("https://localhost:44332/api/CondicionTributarias");
-            WebResponse oResponse = oRequest.GetResponse();
-            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
-            return await sr.ReadToEndAsync();
-        }
-       
-        public string Send<T>(string url, T objectRequest, string method = "POST")
-        {
-            string result = ""; //String por la palabra exito
-            try
-            {
-
-
-                JavaScriptSerializer js = new JavaScriptSerializer();
-
-                //serializamos el objeto
-                string json = Newtonsoft.Json.JsonConvert.SerializeObject(objectRequest);
-
-                //peticion
-                WebRequest request = WebRequest.Create(url);
-                //headers
-                request.Method = method;
-                request.PreAuthenticate = true;
-                request.ContentType = "application/json;charset=utf-8'";
-                request.Timeout = 10000; //esto es opcional
-
-                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
-                {
-                    streamWriter.Write(json);
-                    streamWriter.Flush();
-                }
-
-                var httpResponse = (HttpWebResponse)request.GetResponse();
-                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                {
-                    result = streamReader.ReadToEnd();
-                }
-
-            }
-            catch (Exception e)
-            {
-
-
-                result = e.Message;
-
-            }
-
-            return result;
-
-            
-        }
-        #endregion
 
         #region Interface
 
@@ -129,11 +82,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
                 bsCliente.DataSource = new Cliente();
                 Agregar();
             }
-            else
-            {
-                bsCliente.DataSource = cliente;
-                Modificar(cliente);
-            }
+           
         }
 
         public void Agregar()
@@ -141,15 +90,17 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             MostrarPantalla();
         }
 
-        public void Modificar(Cliente cliente)
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
+
+        #region Utilidades
         public void MostrarPantalla()
         {
             ShowDialog();
         }
+        public void Salir()
+        {
+            Visible = false;
+        }
         #endregion
-
     }
 }

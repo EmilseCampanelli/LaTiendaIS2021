@@ -1,6 +1,8 @@
-﻿using System;
+﻿using LaTiendaIS2021.Dominio.Modelo_View;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 
@@ -42,5 +44,10 @@ namespace LaTiendaIs2021.DatosV1.Data
         public System.Data.Entity.DbSet<LaTiendaIS2021.Dominio.Modelo.Color> Colors { get; set; }
 
         public System.Data.Entity.DbSet<LaTiendaIS2021.Dominio.Modelo.Talle> Talles { get; set; }
+
+        public System.Data.Entity.DbSet<LaTiendaIS2021.Dominio.Modelo.Stock> Stocks { get; set; }
+      
+        
+        
     }
 }

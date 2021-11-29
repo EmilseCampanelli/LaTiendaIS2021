@@ -1,4 +1,6 @@
 ﻿using LaTiendaIS2021.Dominio.Modelo;
+using LaTiendaIS2021.Presentacion.Interfaces;
+using LaTiendaIS2021.Presentacion;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,32 +17,33 @@ using System.Windows.Forms;
 
 namespace LaTiendaIS2021.Presentacion.Vistas
 {
-    public partial class VistaAgregarProducto : Form
+    public partial class VistaAgregarProducto : Form, IVistaAgregarProducto
     {
         List<Marca> ListMarca = new List<Marca>();
         List<Rubro> ListRubro = new List<Rubro>();
+        PresentadorPrincipal _presentador;
         public VistaAgregarProducto()
         {
             InitializeComponent();
         }
 
-        private async void VistaAgregarProducto_Load(object sender, EventArgs e)
+        private  void VistaAgregarProducto_Load(object sender, EventArgs e)
         {
+        }
+        public async void SetPresentador(PresentadorPrincipal presentador)
+        {
+            _presentador = presentador;
+            bsProducto.DataSource = _presentador.NuevoProducto();
             List<string> marcas = new List<string>();
             List<string> rubros = new List<string>();
-            bsProducto.DataSource = new Producto();
+            ListMarca = await _presentador.GetMarca();
+            ListRubro = await _presentador.GetRubro();
 
-            string res_Marca = await GetHttpMarca();
-           ListMarca = JsonConvert.DeserializeObject<List<Marca>>(res_Marca);
-
-            string res_Rubro = await GetHttpRubro();
-            ListRubro = JsonConvert.DeserializeObject<List<Rubro>>(res_Rubro);
-
-            foreach(var i in ListMarca)
+            foreach (var i in ListMarca)
             {
                 marcas.Add(i.Descripcion);
             }
-            foreach(var i in ListRubro)
+            foreach (var i in ListRubro)
             {
                 rubros.Add(i.Descripcion);
             }
@@ -49,7 +52,6 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             cbxRubro.DataSource = rubros;
 
         }
-
         private void btnVolver_Click(object sender, EventArgs e)
         {
             Close();
@@ -57,16 +59,18 @@ namespace LaTiendaIS2021.Presentacion.Vistas
 
         private void btnGuardarProducto_Click(object sender, EventArgs e)
         {
-            string url = "https://localhost:44332/api/Productoes";
+           
             var oProducto = bsProducto.DataSource as Producto;
             
             oProducto.MarcaId = DevolverIdMarca(cbxMarca.Text);
             
             oProducto.RubroId = DevolverIdRubro(cbxRubro.Text);
-          
-            string result = Send<Producto>(url, oProducto, "POST");
+
+            _presentador.AgregarProducto(oProducto);
+           
             MessageBox.Show("El Producto se Guardo con Exito");
             bsProducto.Clear();
+            Salir();
         }
 
         public int DevolverIdMarca(string descripcion)
@@ -85,63 +89,35 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             return vs;
         }
 
-        #region Web Api
-        private async Task<string> GetHttpMarca()
+      
+
+
+        #region Interface
+
+        public void Mostrar(Producto producto= null)
         {
-            WebRequest oRequest = WebRequest.Create("https://localhost:44332/api/Marcas");
-            WebResponse oResponse = oRequest.GetResponse();
-            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
-            return await sr.ReadToEndAsync();
-        }
-        private async Task<string> GetHttpRubro()
-        {
-            WebRequest oRequest = WebRequest.Create("https://localhost:44332/api/Rubroes");
-            WebResponse oResponse = oRequest.GetResponse();
-            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
-            return await sr.ReadToEndAsync();
-        }
-        public string Send<T>(string url, T objectRequest, string method = "POST")
-        {
-            string result = ""; //String por la palabra exito
-            try
+            if(producto == null)
             {
-
-
-                JavaScriptSerializer js = new JavaScriptSerializer();
-
-                //serializamos el objeto
-                string json = Newtonsoft.Json.JsonConvert.SerializeObject(objectRequest);
-
-                //peticion
-                WebRequest request = WebRequest.Create(url);
-                //headers
-                request.Method = method;
-                request.PreAuthenticate = true;
-                request.ContentType = "application/json;charset=utf-8'";
-                request.Timeout = 10000; //esto es opcional
-
-                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
-                {
-                    streamWriter.Write(json);
-                    streamWriter.Flush();
-                }
-
-                var httpResponse = (HttpWebResponse)request.GetResponse();
-                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                {
-                    result = streamReader.ReadToEnd();
-                }
-
+                bsProducto.DataSource = _presentador.NuevoProducto();
+                Agregar();
             }
-            catch (Exception e)
-            {
+            
+        }
 
+        public void Agregar()
+        {
+            MostrarPantalla();
+        }
+        #endregion
 
-                result = e.Message;
-
-            }
-
-            return result;
+        #region Utilidades
+        public void MostrarPantalla()
+        {
+            ShowDialog();
+        }
+        public void Salir()
+        {
+            Visible = false;
         }
         #endregion
     }

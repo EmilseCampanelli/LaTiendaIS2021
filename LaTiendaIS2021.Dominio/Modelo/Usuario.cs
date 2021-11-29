@@ -18,6 +18,7 @@ namespace LaTiendaIS2021.Dominio.Modelo
         }
         public string contraseña { get; set; }
 
+
        
 
     }

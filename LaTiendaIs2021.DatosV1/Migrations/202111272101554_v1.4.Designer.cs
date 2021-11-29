@@ -7,13 +7,13 @@ namespace LaTiendaIs2021.DatosV1.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Initial : IMigrationMetadata
+    public sealed partial class v14 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(v14));
         
         string IMigrationMetadata.Id
         {
-            get { return "202111092200072_Initial"; }
+            get { return "202111272101554_v1.4"; }
         }
         
         string IMigrationMetadata.Source

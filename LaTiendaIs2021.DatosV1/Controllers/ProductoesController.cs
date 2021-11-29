@@ -19,9 +19,23 @@ namespace LaTiendaIs2021.DatosV1.Controllers
         private LaTiendaIs2021DatosV1Context db = new LaTiendaIs2021DatosV1Context();
 
         // GET: api/Productoes
-        public IQueryable<Producto> GetProductoes()
+        public IHttpActionResult GetProductoes()
         {
-            return db.Productoes;
+            var p = (from d in db.Productoes
+                     join r in db.Rubroes on d.RubroId equals r.Id
+                     join m in db.Marcas on d.MarcaId equals m.Id
+                          
+                          select new
+                          {
+                              codigo = d.Codigo,
+                              Descripcion = d.Descripcion,
+                              Marca = m.Descripcion,
+                              Rubro = r.Descripcion
+                          }
+                          ).ToList();
+
+            return Ok(p);
+
         }
 
         // GET: api/Productoes/5

@@ -1,4 +1,5 @@
-﻿using LaTiendaIS2021.Presentacion.Vistas;
+﻿using LaTiendaIS2021.Presentacion;
+using LaTiendaIS2021.Presentacion.Vistas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,19 +14,23 @@ namespace LaTiendaIS2021.Presentacion
 {
     public partial class Form1 : Form
     {
-        VistaAgregarProducto AgregrarProducto;
-        VistaAgregarCliente AgregarCliente;
+        VistaListaProducto AgregrarProducto;
+        VistaListaCliente AgregarCliente;
         RealizarVenta Venta;
-        public Form1()
+
+        PresentadorPrincipal _presentador;
+
+        public Form1(PresentadorPrincipal presentador)
         {
             InitializeComponent();
+            _presentador = presentador; 
         }
 
         private void agregarProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (AgregrarProducto == null)
             {
-                AgregrarProducto = new VistaAgregarProducto
+                AgregrarProducto = new VistaListaProducto(_presentador)
                 {
                     MdiParent = this,
                     WindowState = FormWindowState.Maximized
@@ -48,7 +53,7 @@ namespace LaTiendaIS2021.Presentacion
         {
             if(AgregarCliente == null)
             {
-                AgregarCliente = new VistaAgregarCliente
+                AgregarCliente = new VistaListaCliente(_presentador)
                 {
                     MdiParent = this,
                     WindowState = FormWindowState.Maximized
@@ -71,7 +76,7 @@ namespace LaTiendaIS2021.Presentacion
         {
             if (Venta == null)
             {
-                Venta = new RealizarVenta
+                Venta = new RealizarVenta(_presentador)
                 {
                     MdiParent = this,
                     WindowState = FormWindowState.Maximized
