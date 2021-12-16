@@ -1,6 +1,5 @@
 ﻿using LaTiendaIS2021.Dominio.Modelo;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace LaTiendaIS2021.Test
 {
@@ -12,7 +11,7 @@ namespace LaTiendaIS2021.Test
         {
             //Configuracion o datos
             Venta venta = new Venta();
-          
+
 
             //Ejecucion
 
@@ -27,12 +26,12 @@ namespace LaTiendaIS2021.Test
         {
             //Configuracion
             Venta venta = new Venta();
-           
+
             venta.agregarLineaVenta(RepositorioTest.Datos.BuscarLV(1));
             venta.agregarLineaVenta(RepositorioTest.Datos.BuscarLV(2));
 
             //Ejecucion
-            
+
             var calculo = venta.CalcularTotalVenta();
 
             //Comrobacion
@@ -43,7 +42,7 @@ namespace LaTiendaIS2021.Test
         public void Eliminar_Linea_De_Venta_de_la_Venta()
         {
             //Configuracion
-         
+
             Venta venta = new Venta();
             venta.agregarLineaVenta(RepositorioTest.Datos.BuscarLV(1));
 

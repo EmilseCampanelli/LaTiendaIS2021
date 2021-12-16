@@ -1,10 +1,5 @@
 ﻿using LaTiendaIS2021.Dominio.Modelo;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LaTiendaIS2021.Test
 {
@@ -22,11 +17,11 @@ namespace LaTiendaIS2021.Test
                 CostoSinIva = 300,
                 MargenGanancia = 30,
                 PorcentajeIva = 21,
-                MarcaId=1,
-                RubroId=1
+                MarcaId = 1,
+                RubroId = 1
             };
             RepositorioTest.Datos.AgregarProducto(producto);
-            
+
         }
     }
 }

@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contratos\IDatosCliente.cs" />
-    <Compile Include="Modelo-View\viewProductos.cs" />
+    <Compile Include="Contratos\PuntoVentaManager.cs" />
+    <Compile Include="Contratos\SessionManager.cs" />
+    <Compile Include="Contratos\SucursalManager.cs" />
+    <Compile Include="Modelo-View\viewComprobante.cs" />
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\Color.cs" />
     <Compile Include="Modelo\CondicionTributaria.cs" />
@@ -59,6 +61,7 @@
     <Compile Include="Modelo\TipoEmpleado.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Modelo\Venta.cs" />
+    <Compile Include="Servicios\ControlText.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

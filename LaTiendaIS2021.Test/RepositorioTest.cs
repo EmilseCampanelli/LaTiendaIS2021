@@ -1,9 +1,5 @@
 ﻿using LaTiendaIS2021.Dominio.Modelo;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LaTiendaIS2021.Test
 {
@@ -52,7 +48,7 @@ namespace LaTiendaIS2021.Test
                     VentaId=1,
                 }
             };
-           
+
             ventas = new List<Venta>();
         }
 
@@ -63,7 +59,7 @@ namespace LaTiendaIS2021.Test
 
         public Producto BuscarP(int codigo)
         {
-            foreach(var i in productos)
+            foreach (var i in productos)
             {
                 if (codigo == i.Codigo) return i;
             }

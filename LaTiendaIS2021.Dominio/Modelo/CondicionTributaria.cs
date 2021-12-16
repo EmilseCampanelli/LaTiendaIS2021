@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LaTiendaIS2021.Dominio.Modelo
+﻿namespace LaTiendaIS2021.Dominio.Modelo
 {
     public class CondicionTributaria
     {
         public int Id { get; set; }
         public string Descripcion { get; set; }
 
-        
+        public string Letra { get; set; }
+
+
     }
 }

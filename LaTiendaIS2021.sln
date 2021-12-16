@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaTiendaIs2021.DatosV1", "L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaTiendaIS2021.Test", "LaTiendaIS2021.Test\LaTiendaIS2021.Test.csproj", "{AE4ED98F-AE81-4F87-B44B-67B3C6BFF463}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaTiendaIS2021.Transversal", "LaTiendaIS2021.Transversal\LaTiendaIS2021.Transversal.csproj", "{AB14F2EC-6C68-41F6-B001-2D8BA8E81AE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{AE4ED98F-AE81-4F87-B44B-67B3C6BFF463}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE4ED98F-AE81-4F87-B44B-67B3C6BFF463}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE4ED98F-AE81-4F87-B44B-67B3C6BFF463}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB14F2EC-6C68-41F6-B001-2D8BA8E81AE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB14F2EC-6C68-41F6-B001-2D8BA8E81AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB14F2EC-6C68-41F6-B001-2D8BA8E81AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB14F2EC-6C68-41F6-B001-2D8BA8E81AE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

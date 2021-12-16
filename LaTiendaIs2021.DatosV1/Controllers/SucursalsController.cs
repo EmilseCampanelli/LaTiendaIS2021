@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
+﻿using LaTiendaIs2021.DatosV1.Data;
+using LaTiendaIS2021.Dominio.Modelo;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using LaTiendaIS2021.Dominio.Modelo;
-using LaTiendaIs2021.DatosV1.Data;
 
 namespace LaTiendaIs2021.DatosV1.Controllers
 {
@@ -37,54 +30,29 @@ namespace LaTiendaIs2021.DatosV1.Controllers
             return Ok(sucursal);
         }
 
-        // PUT: api/Sucursals/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutSucursal(int id, Sucursal sucursal)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            if (id != sucursal.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(sucursal).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SucursalExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
 
         // POST: api/Sucursals
         [ResponseType(typeof(Sucursal))]
         public async Task<IHttpActionResult> PostSucursal(Sucursal sucursal)
         {
-            if (!ModelState.IsValid)
+            int bandera = 0;
+            try
             {
-                return BadRequest(ModelState);
+                foreach (var i in db.Sucursals)
+                {
+                    if (i.Descripcion == sucursal.Descripcion)
+                    {
+                        bandera = i.Id;
+                    }
+
+                }
             }
+            catch
+            {
 
-            db.Sucursals.Add(sucursal);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = sucursal.Id }, sucursal);
+            }
+            return Ok(bandera);
         }
 
         // DELETE: api/Sucursals/5

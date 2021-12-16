@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Script.Serialization;
 
 namespace LaTiendaIs2021.DatosV1.Models
@@ -13,6 +11,7 @@ namespace LaTiendaIs2021.DatosV1.Models
     {
         public static async Task<string> GetHttp(string url)
         {
+            
             WebRequest oRequest = WebRequest.Create(url);
             WebResponse oResponse = oRequest.GetResponse();
             StreamReader sr = new StreamReader(oResponse.GetResponseStream());
@@ -67,4 +66,7 @@ namespace LaTiendaIs2021.DatosV1.Models
 
 
     }
+
+
+   
 }

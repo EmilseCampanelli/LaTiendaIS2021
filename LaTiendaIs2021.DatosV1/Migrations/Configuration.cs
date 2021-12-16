@@ -1,11 +1,7 @@
 namespace LaTiendaIs2021.DatosV1.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-    using LaTiendaIs2021.DatosV1.Data;
     using LaTiendaIS2021.Dominio.Modelo;
+    using System.Data.Entity.Migrations;
 
     internal sealed class Configuration : DbMigrationsConfiguration<LaTiendaIs2021.DatosV1.Data.LaTiendaIs2021DatosV1Context>
     {
@@ -29,12 +25,17 @@ namespace LaTiendaIs2021.DatosV1.Migrations
             //    );
             //
             context.Productoes.AddOrUpdate(x => x.Id,
-                new Producto() { Id=1, Codigo = 111, Descripcion = "Remeras",
+                new Producto()
+                {
+                    Id = 1,
+                    Codigo = 111,
+                    Descripcion = "Remeras",
                     CostoSinIva = 100,
-                    MargenGanancia = (decimal)0.3, PorcentajeIva = (decimal)0.21,
+                    MargenGanancia = (decimal)0.3,
+                    PorcentajeIva = (decimal)0.21,
                     //PrecioFinal = (decimal?)500.0, MarcaId = 1, RubroId = 1
                     //
-                    },
+                },
                 new Producto()
                 {
                     Id = 2,
@@ -43,7 +44,7 @@ namespace LaTiendaIs2021.DatosV1.Migrations
                     CostoSinIva = 200,
                     MargenGanancia = (decimal)0.3,
                     PorcentajeIva = (decimal)0.21,
-                  //  PrecioFinal = (decimal?)600.0,
+                    //  PrecioFinal = (decimal?)600.0,
                     MarcaId = 1,
                     RubroId = 1
                 }
@@ -51,8 +52,8 @@ namespace LaTiendaIs2021.DatosV1.Migrations
             context.Marcas.AddOrUpdate(x => x.Id,
                 new Marca()
                 {
-                    Id=1,
-                    Descripcion="Adidas"
+                    Id = 1,
+                    Descripcion = "Adidas"
                 },
                 new Marca()
                 {
@@ -68,7 +69,7 @@ namespace LaTiendaIs2021.DatosV1.Migrations
             context.Rubroes.AddOrUpdate(x => x.Id,
                 new Rubro()
                 {
-                    Id=1,
+                    Id = 1,
                     Descripcion = "Deportivo"
                 },
                  new Rubro()

@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using LaTiendaIs2021.DatosV1.Data;
+using LaTiendaIS2021.Dominio.Modelo;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using LaTiendaIS2021.Dominio.Modelo;
-using LaTiendaIs2021.DatosV1.Data;
 
 namespace LaTiendaIs2021.DatosV1.Controllers
 {
@@ -24,9 +21,8 @@ namespace LaTiendaIs2021.DatosV1.Controllers
             return db.Clientes;
         }
 
-        // GET: api/Clientes/5
         [ResponseType(typeof(Cliente))]
-        public async Task<IHttpActionResult> GetCliente(int id)
+        public async Task<IHttpActionResult> GetClientePorDefecto(int id)
         {
             Cliente cliente = await db.Clientes.FindAsync(id);
             if (cliente == null)
@@ -36,6 +32,17 @@ namespace LaTiendaIs2021.DatosV1.Controllers
 
             return Ok(cliente);
         }
+
+        [ResponseType(typeof(Cliente))]
+        public async Task<IHttpActionResult> GetCliente(string cuit)
+        {
+            var cliente = (from client in db.Clientes
+                           where client.Cuit == cuit
+                           select client).FirstOrDefault();
+
+            return Ok(cliente);
+        }
+
 
         // PUT: api/Clientes/5
         [ResponseType(typeof(void))]
@@ -84,7 +91,9 @@ namespace LaTiendaIs2021.DatosV1.Controllers
             db.Clientes.Add(cliente);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = cliente.Id }, cliente);
+            cliente.Id = db.Entry(cliente).Entity.Id;
+
+            return Ok(cliente);
         }
 
         // DELETE: api/Clientes/5

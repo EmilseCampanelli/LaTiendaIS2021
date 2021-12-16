@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using LaTiendaIs2021.DatosV1.Data;
+using LaTiendaIS2021.Dominio.Modelo;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using LaTiendaIS2021.Dominio.Modelo;
-using LaTiendaIs2021.DatosV1.Data;
 
 namespace LaTiendaIs2021.DatosV1.Controllers
 {
@@ -73,18 +69,40 @@ namespace LaTiendaIs2021.DatosV1.Controllers
         }
 
         // POST: api/LineaVentas
-        [ResponseType(typeof(LineaVenta))]
+        [HttpPost]
         public async Task<IHttpActionResult> PostLineaVenta(LineaVenta lineaVenta)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            ModificarStockAsync(lineaVenta, 0);
+
+            lineaVenta.Venta = db.Ventas.Find(lineaVenta.VentaId);
+            lineaVenta.Talle = db.Talles.Find(lineaVenta.TalleId);
+            lineaVenta.Color = db.Colors.Find(lineaVenta.ColorId);
+            lineaVenta.Producto = db.Productoes.Find(lineaVenta.ProductoId);
+
+           
+            
 
             db.LineaVentas.Add(lineaVenta);
             await db.SaveChangesAsync();
+            lineaVenta.id = db.Entry(lineaVenta).Entity.id;
+            
+            return Ok(lineaVenta);
+        }
+        public void  ModificarStockAsync(LineaVenta lv,int i)
+        {
+           // LineaVenta lv = db.LineaVentas.Find(_lv);
+            Stock s = db.Stocks.Find(lv.ProductoId, lv.ColorId, lv.TalleId); 
+           
 
-            return CreatedAtRoute("DefaultApi", new { id = lineaVenta.id }, lineaVenta);
+            s.cantidad -= lv.cantidad;
+
+            db.Entry(s).State = EntityState.Modified;
+
+            db.SaveChanges();
         }
 
         // DELETE: api/LineaVentas/5

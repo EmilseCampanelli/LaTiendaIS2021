@@ -1,8 +1,7 @@
 namespace LaTiendaIs2021.DatosV1.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class v14 : DbMigration
     {
         public override void Up()
@@ -10,14 +9,14 @@ namespace LaTiendaIs2021.DatosV1.Migrations
             CreateTable(
                 "dbo.Stocks",
                 c => new
-                    {
-                        id = c.Int(nullable: false, identity: true),
-                        cantidad = c.Int(),
-                        ColorId = c.Int(nullable: false),
-                        ProductoId = c.Int(nullable: false),
-                        SucursalId = c.Int(nullable: false),
-                        TalleId = c.Int(nullable: false),
-                    })
+                {
+                    id = c.Int(nullable: false, identity: true),
+                    cantidad = c.Int(),
+                    ColorId = c.Int(nullable: false),
+                    ProductoId = c.Int(nullable: false),
+                    SucursalId = c.Int(nullable: false),
+                    TalleId = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.id)
                 .ForeignKey("dbo.Colors", t => t.ColorId, cascadeDelete: true)
                 .ForeignKey("dbo.Productoes", t => t.ProductoId, cascadeDelete: true)
@@ -27,9 +26,9 @@ namespace LaTiendaIs2021.DatosV1.Migrations
                 .Index(t => t.ProductoId)
                 .Index(t => t.SucursalId)
                 .Index(t => t.TalleId);
-            
+
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.Stocks", "TalleId", "dbo.Talles");

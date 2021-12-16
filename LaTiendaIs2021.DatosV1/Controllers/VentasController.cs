@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using LaTiendaIs2021.DatosV1.Data;
+using LaTiendaIS2021.Dominio.Modelo;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using LaTiendaIS2021.Dominio.Modelo;
-using LaTiendaIs2021.DatosV1.Data;
 
 namespace LaTiendaIs2021.DatosV1.Controllers
 {
@@ -81,10 +77,15 @@ namespace LaTiendaIs2021.DatosV1.Controllers
                 return BadRequest(ModelState);
             }
 
+            venta.Cliente = db.Clientes.Find(venta.ClienteId);
+            venta.PuntoVenta = db.PuntoVentas.Find(venta.PuntoVentaId);
+            venta.Usuario = db.Usuarios.Find(venta.UsuarioId);
+
             db.Ventas.Add(venta);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = venta.id }, venta);
+            venta.id = db.Entry(venta).Entity.id;
+            return Ok(venta);
         }
 
         // DELETE: api/Ventas/5

@@ -1,16 +1,15 @@
-﻿using System;
+﻿using LaTiendaIs2021.DatosV1.Data;
+using LaTiendaIS2021.Dominio.Modelo;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using LaTiendaIS2021.Dominio.Modelo;
-using LaTiendaIs2021.DatosV1.Data;
 
 namespace LaTiendaIs2021.DatosV1.Controllers
 {
@@ -19,42 +18,24 @@ namespace LaTiendaIs2021.DatosV1.Controllers
         private LaTiendaIs2021DatosV1Context db = new LaTiendaIs2021DatosV1Context();
 
         // GET: api/Productoes
-        public IHttpActionResult GetProductoes()
+        public IQueryable<Producto> GetProducto()
         {
-            var p = (from d in db.Productoes
-                     join r in db.Rubroes on d.RubroId equals r.Id
-                     join m in db.Marcas on d.MarcaId equals m.Id
-                          
-                          select new
-                          {
-                              codigo = d.Codigo,
-                              Descripcion = d.Descripcion,
-                              Marca = m.Descripcion,
-                              Rubro = r.Descripcion
-                          }
-                          ).ToList();
-
-            return Ok(p);
-
+            return db.Productoes;
         }
 
         // GET: api/Productoes/5
         [ResponseType(typeof(Producto))]
-        public IHttpActionResult GetProducto(int id)
+        public List<Producto> GetProducto(int codProd)
         {
 
-            Producto p = (from d in db.Productoes
-                          where d.Codigo == id
-                          select d).FirstOrDefault();
+            var p = (from d in db.Productoes
+                     where d.Codigo == codProd
+                     select d);
 
             // Producto producto = await db.Productoes.FindAsync(id);
-            if (p == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(p);
+            return p.ToList();
         }
+
 
         // PUT: api/Productoes/5
         [ResponseType(typeof(void))]
@@ -107,11 +88,11 @@ namespace LaTiendaIs2021.DatosV1.Controllers
 
                 return Ok("Exito");//CreatedAtRoute("DefaultApi", new { id = producto.Id }, producto);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return Ok(e);
             }
-           
+
         }
 
         // DELETE: api/Productoes/5

@@ -1,13 +1,7 @@
-﻿using LaTiendaIS2021.Presentacion;
+﻿using LaTiendaIS2021.Dominio.Contratos;
+using LaTiendaIS2021.Dominio.Modelo;
 using LaTiendaIS2021.Presentacion.Vistas;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LaTiendaIS2021.Presentacion
@@ -19,15 +13,30 @@ namespace LaTiendaIS2021.Presentacion
         RealizarVenta Venta;
 
         PresentadorPrincipal _presentador;
+        Usuario User = new Usuario();
+
 
         public Form1(PresentadorPrincipal presentador)
         {
+
+
             InitializeComponent();
-            _presentador = presentador; 
+            _presentador = presentador;
+
+
         }
 
+        public async void Inicializador()
+        {
+            cbxSucursal.DataSource = await _presentador.GetSucursals();
+            cbxSucursal.DisplayMember = "Descripcion";
+            cbxSucursal.ValueMember = "Id";
+
+
+        }
         private void agregarProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Bloquear();
             if (AgregrarProducto == null)
             {
                 AgregrarProducto = new VistaListaProducto(_presentador)
@@ -51,7 +60,8 @@ namespace LaTiendaIS2021.Presentacion
 
         private void agregarClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(AgregarCliente == null)
+            Bloquear();
+            if (AgregarCliente == null)
             {
                 AgregarCliente = new VistaListaCliente(_presentador)
                 {
@@ -74,6 +84,7 @@ namespace LaTiendaIS2021.Presentacion
 
         private void nuevaVentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Bloquear();
             if (Venta == null)
             {
                 Venta = new RealizarVenta(_presentador)
@@ -93,6 +104,113 @@ namespace LaTiendaIS2021.Presentacion
             Venta.VisibleChanged -= Venta_VisibleChanged;
             Venta = null;
             menuStrip1.Visible = true;
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bloquear();
+
+            try
+            {
+                SessionManager.Logout();
+
+                Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            Sucursal suc = new Sucursal();
+            PuntoVenta pv = new PuntoVenta();
+
+            suc = (Sucursal)cbxSucursal.SelectedItem;
+            pv = (PuntoVenta)cbxPVenta.SelectedItem;
+
+
+            if (suc.Id != 0 && pv.id != 0)
+            {
+                try
+                {
+                    SucursalManager.Inicio(suc);
+                    SucursalManager _suc = SucursalManager.GetInstance;
+                    PuntoVentaManager.Inicio(pv);
+                    PuntoVentaManager _pv = PuntoVentaManager.GetInstance;
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            menuStrip1.Enabled = true;
+            pnlSucursal.Visible = false;
+        }
+
+        private async void cbxSucursal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Sucursal suc = (Sucursal)cbxSucursal.SelectedItem;
+
+            var lstPventa = await _presentador.GetPventa(suc.Id);
+
+            cbxPVenta.DataSource = lstPventa;
+            cbxPVenta.DisplayMember = "Descripcion";
+            cbxPVenta.ValueMember = "Id";
+
+
+
+        }
+
+        public void Bloquear()
+        {
+            label1.Visible = false;
+            label2.Visible = false;
+            cbxPVenta.Visible = false;
+            cbxSucursal.Visible = false;
+            btnIngresar.Visible = false;
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+
+            WSLogin.LoginServiceClient service = new WSLogin.LoginServiceClient();
+
+            var aut = service.SolicitarAutorizacion("E52CE27F-0B1F-4DFE-A610-F2C32EEC6A97");
+
+            User.usuario = txtUser.Text;
+            User.contraseña = txtPass.Text;
+            int Id = _presentador.BuscarUsuario(User);
+            if (Id != 0)
+            {
+                try
+                {
+                    User.Id = Id;
+                    SessionManager.Login(User);
+                    SessionManager session = SessionManager.GetInstance;
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+            pnlLogin.Visible = false;
+
+            Inicializador();
+
+            pnlSucursal.Visible = true;
+
+           
+           
+
+
+            
         }
     }
 }

@@ -1,3 +1,5 @@
+using LaTiendaIs2021.DatosV1.Areas.HelpPage.ModelDescriptions;
+using LaTiendaIs2021.DatosV1.Areas.HelpPage.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,8 +13,6 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using LaTiendaIs2021.DatosV1.Areas.HelpPage.ModelDescriptions;
-using LaTiendaIs2021.DatosV1.Areas.HelpPage.Models;
 
 namespace LaTiendaIs2021.DatosV1.Areas.HelpPage
 {

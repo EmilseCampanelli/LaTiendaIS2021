@@ -29,6 +29,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnConfirmarVenta = new System.Windows.Forms.Button();
             this.abajo = new System.Windows.Forms.Panel();
             this.btnCancelarVenta = new System.Windows.Forms.Button();
@@ -41,35 +42,52 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.btnAgregarCliente = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.arribaMedio = new System.Windows.Forms.Panel();
+            this.pnlCliente = new System.Windows.Forms.Panel();
+            this.lblCondicionTributaria = new System.Windows.Forms.Label();
+            this.lblRazonSocial = new System.Windows.Forms.Label();
+            this.lblCuit = new System.Windows.Forms.Label();
             this.lblTipoDePago = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnTarjeta = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.principal = new System.Windows.Forms.Panel();
             this.medio = new System.Windows.Forms.Panel();
             this.medioMedio = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.dgvLv = new System.Windows.Forms.DataGridView();
+            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioVentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marcaDescripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rubroDescripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.NudCantidad = new System.Windows.Forms.NumericUpDown();
+            this.cbxColor = new System.Windows.Forms.ComboBox();
+            this.cbxTalle = new System.Windows.Forms.ComboBox();
+            this.btnBuscarProducto = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.dgvLV = new System.Windows.Forms.DataGridView();
-            this.Talles = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Colores = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtBuscarProducto = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.lineaVentaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.abajo.SuspendLayout();
             this.panel3.SuspendLayout();
             this.arriba.SuspendLayout();
             this.arribaMedio.SuspendLayout();
+            this.pnlCliente.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.principal.SuspendLayout();
             this.medio.SuspendLayout();
             this.medioMedio.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudCantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lineaVentaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnConfirmarVenta
@@ -84,6 +102,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.btnConfirmarVenta.TabIndex = 0;
             this.btnConfirmarVenta.Text = "Confirmar";
             this.btnConfirmarVenta.UseVisualStyleBackColor = false;
+            this.btnConfirmarVenta.Click += new System.EventHandler(this.btnConfirmarVenta_Click);
             // 
             // abajo
             // 
@@ -113,7 +132,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             // 
             this.lblPuntoVenta.AutoSize = true;
             this.lblPuntoVenta.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPuntoVenta.Location = new System.Drawing.Point(589, 9);
+            this.lblPuntoVenta.Location = new System.Drawing.Point(438, 9);
             this.lblPuntoVenta.Name = "lblPuntoVenta";
             this.lblPuntoVenta.Size = new System.Drawing.Size(93, 14);
             this.lblPuntoVenta.TabIndex = 2;
@@ -123,7 +142,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(626, 29);
+            this.lblUsuario.Location = new System.Drawing.Point(517, 28);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(53, 14);
             this.lblUsuario.TabIndex = 1;
@@ -198,6 +217,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             // arribaMedio
             // 
             this.arribaMedio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.arribaMedio.Controls.Add(this.pnlCliente);
             this.arribaMedio.Controls.Add(this.btnAgregarCliente);
             this.arribaMedio.Controls.Add(this.label3);
             this.arribaMedio.Dock = System.Windows.Forms.DockStyle.Top;
@@ -205,6 +225,44 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.arribaMedio.Name = "arribaMedio";
             this.arribaMedio.Size = new System.Drawing.Size(776, 59);
             this.arribaMedio.TabIndex = 9;
+            // 
+            // pnlCliente
+            // 
+            this.pnlCliente.Controls.Add(this.lblCondicionTributaria);
+            this.pnlCliente.Controls.Add(this.lblRazonSocial);
+            this.pnlCliente.Controls.Add(this.lblCuit);
+            this.pnlCliente.Location = new System.Drawing.Point(170, 9);
+            this.pnlCliente.Name = "pnlCliente";
+            this.pnlCliente.Size = new System.Drawing.Size(481, 43);
+            this.pnlCliente.TabIndex = 10;
+            this.pnlCliente.Visible = false;
+            // 
+            // lblCondicionTributaria
+            // 
+            this.lblCondicionTributaria.AutoSize = true;
+            this.lblCondicionTributaria.Location = new System.Drawing.Point(312, 7);
+            this.lblCondicionTributaria.Name = "lblCondicionTributaria";
+            this.lblCondicionTributaria.Size = new System.Drawing.Size(35, 13);
+            this.lblCondicionTributaria.TabIndex = 2;
+            this.lblCondicionTributaria.Text = "label6";
+            // 
+            // lblRazonSocial
+            // 
+            this.lblRazonSocial.AutoSize = true;
+            this.lblRazonSocial.Location = new System.Drawing.Point(171, 7);
+            this.lblRazonSocial.Name = "lblRazonSocial";
+            this.lblRazonSocial.Size = new System.Drawing.Size(35, 13);
+            this.lblRazonSocial.TabIndex = 1;
+            this.lblRazonSocial.Text = "label7";
+            // 
+            // lblCuit
+            // 
+            this.lblCuit.AutoSize = true;
+            this.lblCuit.Location = new System.Drawing.Point(16, 7);
+            this.lblCuit.Name = "lblCuit";
+            this.lblCuit.Size = new System.Drawing.Size(25, 13);
+            this.lblCuit.TabIndex = 0;
+            this.lblCuit.Text = "Cuit";
             // 
             // lblTipoDePago
             // 
@@ -227,7 +285,6 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnTarjeta);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.txtTotal);
             this.panel1.Controls.Add(this.label4);
@@ -236,14 +293,6 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(774, 40);
             this.panel1.TabIndex = 10;
-            // 
-            // btnTarjeta
-            // 
-            this.btnTarjeta.Location = new System.Drawing.Point(668, 1);
-            this.btnTarjeta.Name = "btnTarjeta";
-            this.btnTarjeta.Size = new System.Drawing.Size(75, 37);
-            this.btnTarjeta.TabIndex = 13;
-            this.btnTarjeta.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -299,10 +348,16 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             // medioMedio
             // 
             this.medioMedio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.medioMedio.Controls.Add(this.button1);
+            this.medioMedio.Controls.Add(this.dgvLv);
+            this.medioMedio.Controls.Add(this.label8);
+            this.medioMedio.Controls.Add(this.label7);
+            this.medioMedio.Controls.Add(this.label6);
+            this.medioMedio.Controls.Add(this.NudCantidad);
+            this.medioMedio.Controls.Add(this.cbxColor);
+            this.medioMedio.Controls.Add(this.cbxTalle);
+            this.medioMedio.Controls.Add(this.btnBuscarProducto);
             this.medioMedio.Controls.Add(this.btnBorrar);
             this.medioMedio.Controls.Add(this.btnAgregar);
-            this.medioMedio.Controls.Add(this.dgvLV);
             this.medioMedio.Controls.Add(this.txtBuscarProducto);
             this.medioMedio.Controls.Add(this.label2);
             this.medioMedio.Controls.Add(this.panel1);
@@ -312,76 +367,141 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.medioMedio.Size = new System.Drawing.Size(776, 343);
             this.medioMedio.TabIndex = 8;
             // 
-            // button1
+            // dgvLv
             // 
-            this.button1.Location = new System.Drawing.Point(440, 4);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(23, 20);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.dgvLv.AutoGenerateColumns = false;
+            this.dgvLv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codigoDataGridViewTextBoxColumn,
+            this.descripcionDataGridViewTextBoxColumn,
+            this.precioVentaDataGridViewTextBoxColumn,
+            this.marcaDescripcionDataGridViewTextBoxColumn,
+            this.rubroDescripcionDataGridViewTextBoxColumn});
+            this.dgvLv.DataSource = this.productoBindingSource;
+            this.dgvLv.Location = new System.Drawing.Point(10, 44);
+            this.dgvLv.Name = "dgvLv";
+            this.dgvLv.Size = new System.Drawing.Size(541, 190);
+            this.dgvLv.TabIndex = 20;
+            this.dgvLv.Click += new System.EventHandler(this.dgvLV_Click);
+            // 
+            // codigoDataGridViewTextBoxColumn
+            // 
+            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
+            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            // 
+            // descripcionDataGridViewTextBoxColumn
+            // 
+            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            // 
+            // precioVentaDataGridViewTextBoxColumn
+            // 
+            this.precioVentaDataGridViewTextBoxColumn.DataPropertyName = "PrecioVenta";
+            this.precioVentaDataGridViewTextBoxColumn.HeaderText = "PrecioVenta";
+            this.precioVentaDataGridViewTextBoxColumn.Name = "precioVentaDataGridViewTextBoxColumn";
+            // 
+            // marcaDescripcionDataGridViewTextBoxColumn
+            // 
+            this.marcaDescripcionDataGridViewTextBoxColumn.DataPropertyName = "MarcaDescripcion";
+            this.marcaDescripcionDataGridViewTextBoxColumn.HeaderText = "Marca";
+            this.marcaDescripcionDataGridViewTextBoxColumn.Name = "marcaDescripcionDataGridViewTextBoxColumn";
+            this.marcaDescripcionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // rubroDescripcionDataGridViewTextBoxColumn
+            // 
+            this.rubroDescripcionDataGridViewTextBoxColumn.DataPropertyName = "RubroDescripcion";
+            this.rubroDescripcionDataGridViewTextBoxColumn.HeaderText = "Rubro";
+            this.rubroDescripcionDataGridViewTextBoxColumn.Name = "rubroDescripcionDataGridViewTextBoxColumn";
+            this.rubroDescripcionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // productoBindingSource
+            // 
+            this.productoBindingSource.DataSource = typeof(LaTiendaIS2021.Dominio.Modelo.Producto);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(557, 151);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 13);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Cantidad";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(560, 95);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(31, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Color";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(560, 42);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(30, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Talle";
+            // 
+            // NudCantidad
+            // 
+            this.NudCantidad.Location = new System.Drawing.Point(561, 167);
+            this.NudCantidad.Name = "NudCantidad";
+            this.NudCantidad.Size = new System.Drawing.Size(120, 20);
+            this.NudCantidad.TabIndex = 16;
+            // 
+            // cbxColor
+            // 
+            this.cbxColor.FormattingEnabled = true;
+            this.cbxColor.Location = new System.Drawing.Point(560, 111);
+            this.cbxColor.Name = "cbxColor";
+            this.cbxColor.Size = new System.Drawing.Size(121, 21);
+            this.cbxColor.TabIndex = 15;
+            // 
+            // cbxTalle
+            // 
+            this.cbxTalle.FormattingEnabled = true;
+            this.cbxTalle.Location = new System.Drawing.Point(560, 58);
+            this.cbxTalle.Name = "cbxTalle";
+            this.cbxTalle.Size = new System.Drawing.Size(121, 21);
+            this.cbxTalle.TabIndex = 14;
+            // 
+            // btnBuscarProducto
+            // 
+            this.btnBuscarProducto.Location = new System.Drawing.Point(440, 4);
+            this.btnBuscarProducto.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBuscarProducto.Name = "btnBuscarProducto";
+            this.btnBuscarProducto.Size = new System.Drawing.Size(23, 20);
+            this.btnBuscarProducto.TabIndex = 13;
+            this.btnBuscarProducto.Text = "button1";
+            this.btnBuscarProducto.UseVisualStyleBackColor = true;
+            this.btnBuscarProducto.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnBorrar
             // 
-            this.btnBorrar.Location = new System.Drawing.Point(701, 102);
+            this.btnBorrar.Location = new System.Drawing.Point(701, 152);
             this.btnBorrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(50, 47);
             this.btnBorrar.TabIndex = 12;
-            this.btnBorrar.Text = "button1";
+            this.btnBorrar.Text = "Eliminar Linea De Venta";
             this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(701, 30);
+            this.btnAgregar.Location = new System.Drawing.Point(701, 44);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(50, 47);
             this.btnAgregar.TabIndex = 11;
-            this.btnAgregar.Text = "button1";
+            this.btnAgregar.Text = "AgregarLV";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // dgvLV
-            // 
-            this.dgvLV.AllowUserToOrderColumns = true;
-            this.dgvLV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Talles,
-            this.Colores,
-            this.Cantidad});
-            this.dgvLV.Location = new System.Drawing.Point(3, 29);
-            this.dgvLV.Name = "dgvLV";
-            this.dgvLV.RowHeadersWidth = 51;
-            this.dgvLV.Size = new System.Drawing.Size(693, 188);
-            this.dgvLV.TabIndex = 6;
-            // 
-            // Talles
-            // 
-            this.Talles.HeaderText = "Talle";
-            this.Talles.MinimumWidth = 6;
-            this.Talles.Name = "Talles";
-            this.Talles.ReadOnly = true;
-            this.Talles.Width = 103;
-            // 
-            // Colores
-            // 
-            this.Colores.HeaderText = "Color";
-            this.Colores.MinimumWidth = 6;
-            this.Colores.Name = "Colores";
-            this.Colores.ReadOnly = true;
-            this.Colores.Width = 102;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.MinimumWidth = 6;
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Cantidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Cantidad.Width = 103;
             // 
             // txtBuscarProducto
             // 
@@ -400,6 +520,10 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.label2.TabIndex = 7;
             this.label2.Text = "CODIGO PRODUCTO: ";
             // 
+            // lineaVentaBindingSource
+            // 
+            this.lineaVentaBindingSource.DataSource = typeof(LaTiendaIS2021.Dominio.Modelo.LineaVenta);
+            // 
             // RealizarVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -416,6 +540,8 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.arriba.ResumeLayout(false);
             this.arribaMedio.ResumeLayout(false);
             this.arribaMedio.PerformLayout();
+            this.pnlCliente.ResumeLayout(false);
+            this.pnlCliente.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -424,7 +550,10 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.medio.ResumeLayout(false);
             this.medioMedio.ResumeLayout(false);
             this.medioMedio.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudCantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lineaVentaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -446,22 +575,35 @@ namespace LaTiendaIS2021.Presentacion.Vistas
         private System.Windows.Forms.Label lblTipoDePago;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnTarjeta;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel principal;
         private System.Windows.Forms.Panel medio;
         private System.Windows.Forms.Panel medioMedio;
-        private System.Windows.Forms.DataGridView dgvLV;
         private System.Windows.Forms.TextBox txtBuscarProducto;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnBorrar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBuscarProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioFinalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Talles;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Colores;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.NumericUpDown NudCantidad;
+        private System.Windows.Forms.ComboBox cbxColor;
+        private System.Windows.Forms.ComboBox cbxTalle;
+        private System.Windows.Forms.BindingSource productoBindingSource;
+        private System.Windows.Forms.BindingSource lineaVentaBindingSource;
+        private System.Windows.Forms.Panel pnlCliente;
+        private System.Windows.Forms.Label lblRazonSocial;
+        private System.Windows.Forms.Label lblCuit;
+        private System.Windows.Forms.Label lblCondicionTributaria;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView dgvLv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioVentaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn marcaDescripcionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rubroDescripcionDataGridViewTextBoxColumn;
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace LaTiendaIs2021.DatosV1.Areas.HelpPage.ModelDescriptions

@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LaTiendaIS2021.Dominio.Modelo
 {
     public class Venta
     {
-        public List<LineaVenta> LineaVenta;
-
+        public virtual List<LineaVenta> LineaVenta { get; set; } //
         public Venta()
         {
-            LineaVenta = new List<LineaVenta>();
+            
             CalcularTotalVenta();
         }
         public int id { get; set; }
         public System.DateTime? fecha { get; set; }
         public decimal total { get; set; }
-        
+
         public int ClienteId { get; set; }
         public int PuntoVentaId { get; set; }
         public int UsuarioId { get; set; }
@@ -41,7 +37,8 @@ namespace LaTiendaIS2021.Dominio.Modelo
 
         public decimal CalcularTotalVenta()
         {
-            foreach(var i in LineaVenta)
+            total = 0;
+            foreach (var i in LineaVenta)
             {
                 total = (decimal)(total + i.precio);
             }

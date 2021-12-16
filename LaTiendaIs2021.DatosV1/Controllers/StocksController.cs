@@ -1,16 +1,14 @@
-﻿using System;
+﻿using LaTiendaIs2021.DatosV1.Data;
+using LaTiendaIS2021.Dominio.Modelo;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using LaTiendaIS2021.Dominio.Modelo;
-using LaTiendaIs2021.DatosV1.Data;
 
 namespace LaTiendaIs2021.DatosV1.Controllers
 {
@@ -26,15 +24,13 @@ namespace LaTiendaIs2021.DatosV1.Controllers
 
         // GET: api/Stocks/5
         [ResponseType(typeof(Stock))]
-        public async Task<IHttpActionResult> GetStock(int id)
+        public List<Stock> GetStock(int codProd)
         {
-            Stock stock = await db.Stocks.FindAsync(id);
-            if (stock == null)
-            {
-                return NotFound();
-            }
+            var stock = from s in db.Stocks
+                        where s.Producto.Codigo == codProd
+                        select s;
 
-            return Ok(stock);
+            return stock.ToList();
         }
 
         // PUT: api/Stocks/5

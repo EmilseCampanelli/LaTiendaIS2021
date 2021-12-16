@@ -1,6 +1,5 @@
 ﻿using LaTiendaIS2021.Dominio.Modelo;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace LaTiendaIS2021.Test
 {
@@ -9,7 +8,7 @@ namespace LaTiendaIS2021.Test
     {
         public LineaVentaTest()
         {
-           
+
         }
         LineaVenta lineaVenta;
         [TestMethod]
@@ -30,11 +29,11 @@ namespace LaTiendaIS2021.Test
 
             //Comprobacion
             Assert.IsTrue(lineaVenta.CantidadProducto());
-            
+
         }
 
         [TestMethod]
-        public void suma_correcta_al_calcular_subtotal_en_linea_de_venta() 
+        public void suma_correcta_al_calcular_subtotal_en_linea_de_venta()
         {
             //Configuracion y Ejecucion
             lineaVenta = RepositorioTest.Datos.BuscarLV(1);
@@ -45,12 +44,12 @@ namespace LaTiendaIS2021.Test
             //Ejecucion
             var calculo = lineaVenta.CalcularSubtotal();
             //Comprobacion
-            Assert.AreEqual(expected: precio, calculo );
-            
+            Assert.AreEqual(expected: precio, calculo);
+
 
 
         }
 
-        
+
     }
 }

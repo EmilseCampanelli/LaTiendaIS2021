@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
+﻿using LaTiendaIs2021.DatosV1.Data;
+using LaTiendaIS2021.Dominio.Modelo;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using LaTiendaIS2021.Dominio.Modelo;
-using LaTiendaIs2021.DatosV1.Data;
 
 namespace LaTiendaIs2021.DatosV1.Controllers
 {
@@ -18,91 +11,29 @@ namespace LaTiendaIs2021.DatosV1.Controllers
     {
         private LaTiendaIs2021DatosV1Context db = new LaTiendaIs2021DatosV1Context();
 
-        // GET: api/Usuarios
-        public IQueryable<Usuario> GetUsuarios()
-        {
-            return db.Usuarios;
-        }
-
-        // GET: api/Usuarios/5
-        [ResponseType(typeof(Usuario))]
-        public async Task<IHttpActionResult> GetUsuario(int id)
-        {
-            Usuario usuario = await db.Usuarios.FindAsync(id);
-            if (usuario == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(usuario);
-        }
-
-        // PUT: api/Usuarios/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutUsuario(int id, Usuario usuario)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != usuario.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(usuario).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UsuarioExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
 
         // POST: api/Usuarios
         [ResponseType(typeof(Usuario))]
         public async Task<IHttpActionResult> PostUsuario(Usuario usuario)
         {
-            if (!ModelState.IsValid)
+            int bandera = 0;
+            try
             {
-                return BadRequest(ModelState);
+                foreach (var i in db.Usuarios)
+                {
+                    if (usuario.usuario == i.usuario && usuario.contraseña == i.contraseña)
+                    {
+                        bandera = i.Id;
+                    }
+                }
+            }
+            catch
+            {
+
             }
 
-            db.Usuarios.Add(usuario);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = usuario.Id }, usuario);
+            return Ok(bandera);
         }
-
-        // DELETE: api/Usuarios/5
-        [ResponseType(typeof(Usuario))]
-        public async Task<IHttpActionResult> DeleteUsuario(int id)
-        {
-            Usuario usuario = await db.Usuarios.FindAsync(id);
-            if (usuario == null)
-            {
-                return NotFound();
-            }
-
-            db.Usuarios.Remove(usuario);
-            await db.SaveChangesAsync();
-
-            return Ok(usuario);
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
