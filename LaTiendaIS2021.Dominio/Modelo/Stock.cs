@@ -3,7 +3,6 @@
     public class Stock
     {
 
-
         public int id { get; set; }
         public int? cantidad { get; set; }
         public int ColorId { get; set; }
@@ -15,6 +14,8 @@
         public virtual Sucursal Sucursal { get; set; }
         public virtual Talle Talle { get; set; }
 
+       
+        
 
 
     }

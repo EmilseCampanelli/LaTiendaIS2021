@@ -218,6 +218,10 @@
     <Compile Include="Migrations\202112061911547_version5.Designer.cs">
       <DependentUpon>202112061911547_version5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112162220185_newVersion.cs" />
+    <Compile Include="Migrations\202112162220185_newVersion.Designer.cs">
+      <DependentUpon>202112162220185_newVersion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ConsultaApi.cs" />
     <Compile Include="Models\Consultas.cs" />
@@ -461,6 +465,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112061911547_version5.resx">
       <DependentUpon>202112061911547_version5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112162220185_newVersion.resx">
+      <DependentUpon>202112162220185_newVersion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

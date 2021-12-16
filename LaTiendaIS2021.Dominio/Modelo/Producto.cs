@@ -1,4 +1,6 @@
-﻿namespace LaTiendaIS2021.Dominio.Modelo
+﻿using System.Collections.Generic;
+
+namespace LaTiendaIS2021.Dominio.Modelo
 {
     public class Producto
     {
@@ -21,6 +23,8 @@
         public virtual Marca Marca { get; set; }
 
         public virtual Rubro Rubro { get; set; }
+
+        public virtual List<Stock> Stock { get; set; }
 
         public string MarcaDescripcion
         {

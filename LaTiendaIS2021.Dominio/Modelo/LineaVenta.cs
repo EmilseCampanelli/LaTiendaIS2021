@@ -5,7 +5,6 @@
         public int id { get; set; }
         public int? cantidad { get; set; }
 
-
         public int ProductoId { get; set; }
         public int VentaId { get; set; }
         public int TalleId { get; set; }
@@ -15,6 +14,9 @@
         public virtual Talle Talle { get; set; }
         public virtual Color Color { get; set; }
         public decimal? precio { get => cantidad * Producto.PrecioVenta; set => value = cantidad * Producto.PrecioVenta; }
+
+       
+
         public bool CantidadProducto()
         {
             if (cantidad > 0)
