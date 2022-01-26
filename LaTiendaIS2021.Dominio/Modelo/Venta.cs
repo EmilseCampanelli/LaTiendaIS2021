@@ -5,35 +5,29 @@ namespace LaTiendaIS2021.Dominio.Modelo
 {
     public class Venta
     {
-        public virtual List<LineaVenta> LineaVenta { get; set; } //
+        //
         public Venta()
         {
-            
-            CalcularTotalVenta();
+
+            //CalcularTotalVenta();
+            this.LineaVenta = new HashSet<LineaVenta>();
+
         }
+        public virtual ICollection<LineaVenta> LineaVenta { get; set; }
         public int id { get; set; }
         public System.DateTime? fecha { get; set; }
         public decimal total { get; set; }
 
         public int ClienteId { get; set; }
         public int PuntoVentaId { get; set; }
+     
         public int UsuarioId { get; set; }
         public virtual Cliente Cliente { get; set; }
 
-
         public virtual PuntoVenta PuntoVenta { get; set; }
         public virtual Usuario Usuario { get; set; }
+        
 
-
-        public void agregarLineaVenta(LineaVenta lineaVenta)
-        {
-            LineaVenta.Add(lineaVenta);
-        }
-
-        public bool ExistenLineasdeVenta()
-        {
-            return LineaVenta.Any();
-        }
 
         public decimal CalcularTotalVenta()
         {
@@ -46,46 +40,38 @@ namespace LaTiendaIS2021.Dominio.Modelo
             return total;
         }
 
-        public void EliminarLineaVenta(int id)
-        {
-            var linea = (from i in LineaVenta
-                         where i.id == id
-                         select i).FirstOrDefault();
 
-            LineaVenta.Remove(linea);
+        public void ConfirmarVenta()
+        {
+            StockUpdate();
         }
 
-        public bool BuscarLineaVenta(int id)
+        //Colocar en la Linea de venta solo dentro del foreach
+        private void StockUpdate()
         {
-            var vs = (from i in LineaVenta
-                      where i.id == id
-                      select i);
-
-            if (vs.Count() > 0) return true;
-            else return false;
-        }
-
-
-
-        public void StockUpdate()
-        {
-            foreach(var lv in LineaVenta)
+            foreach (var lv in LineaVenta)
             {
                 var prod = lv.Producto;
-                if (GetStock(prod) != null){
-                    if(GetStock(prod).ColorId == lv.ColorId && GetStock(prod).TalleId == lv.TalleId)
+                if (GetStock(prod) != null)
+                {
+                    if (GetStock(prod).ColorId == lv.ColorId && GetStock(prod).TalleId == lv.TalleId)
                     {
                         Stock s = GetStock(prod);
-                        SetStock(s, lv);
+                        if(s.SucursalId == PuntoVenta.SucursalId)
+                        {
+                            SetStock(s, lv);
+                        }
+                        
                     }
                 }
             }
         }
 
-
+        //Colorcar en el producto
+        //Comparar la sucursal
         public Stock GetStock(Producto producto)
         {
-            foreach(var stock in producto.Stock)
+            foreach (var stock in producto.Stock)
             {
                 return stock;
             }

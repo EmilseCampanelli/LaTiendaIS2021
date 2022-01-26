@@ -41,9 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contratos\PuntoVentaManager.cs" />
-    <Compile Include="Contratos\SessionManager.cs" />
-    <Compile Include="Contratos\SucursalManager.cs" />
+    <Compile Include="Contratos\IConexion.cs" />
+    <Compile Include="Contratos\IRepProd.cs" />
     <Compile Include="Modelo-View\viewComprobante.cs" />
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\Color.cs" />
@@ -61,6 +60,7 @@
     <Compile Include="Modelo\TipoEmpleado.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Modelo\Venta.cs" />
+    <Compile Include="Servicios\AdapterLogin.cs" />
     <Compile Include="Servicios\ControlText.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -15,7 +15,7 @@
         public virtual Color Color { get; set; }
         public decimal? precio { get => cantidad * Producto.PrecioVenta; set => value = cantidad * Producto.PrecioVenta; }
 
-       
+
 
         public bool CantidadProducto()
         {

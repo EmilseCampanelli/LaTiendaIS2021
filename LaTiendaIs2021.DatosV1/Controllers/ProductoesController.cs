@@ -24,16 +24,25 @@ namespace LaTiendaIs2021.DatosV1.Controllers
         }
 
         // GET: api/Productoes/5
-        [ResponseType(typeof(Producto))]
-        public List<Producto> GetProducto(int codProd)
+       // [ResponseType(typeof(Producto))]
+        public IHttpActionResult GetProducto(int codProd)
         {
+            try
+            {
+                var p = (from d in db.Productoes
+                         where d.Codigo == codProd
+                         select d).ToList();
 
-            var p = (from d in db.Productoes
-                     where d.Codigo == codProd
-                     select d);
+                // Producto producto = await db.Productoes.FindAsync(id);
+                return Json(p,new Newtonsoft.Json.JsonSerializerSettings {ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore });
 
-            // Producto producto = await db.Productoes.FindAsync(id);
-            return p.ToList();
+                
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+           
         }
 
 

@@ -30,9 +30,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.bsCliente = new System.Windows.Forms.BindingSource(this.components);
             this.btnGuardarCliente = new System.Windows.Forms.Button();
-            this.condicionTributariaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnVolver = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,19 +44,17 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnGuardarenVenta = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.bsCliente)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.condicionTributariaBindingSource)).BeginInit();
+            this.condicionTributariaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bsCliente = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.condicionTributariaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsCliente)).BeginInit();
             this.SuspendLayout();
-            // 
-            // bsCliente
-            // 
-            this.bsCliente.DataSource = typeof(LaTiendaIS2021.Dominio.Modelo.Cliente);
             // 
             // btnGuardarCliente
             // 
@@ -68,10 +64,6 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.btnGuardarCliente.TabIndex = 26;
             this.btnGuardarCliente.Text = "Guardar";
             this.btnGuardarCliente.UseVisualStyleBackColor = true;
-            // 
-            // condicionTributariaBindingSource
-            // 
-            this.condicionTributariaBindingSource.DataSource = typeof(LaTiendaIS2021.Dominio.Modelo.CondicionTributaria);
             // 
             // tableLayoutPanel1
             // 
@@ -184,6 +176,8 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.txtCuiTCliente.Name = "txtCuiTCliente";
             this.txtCuiTCliente.Size = new System.Drawing.Size(231, 20);
             this.txtCuiTCliente.TabIndex = 35;
+            this.txtCuiTCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCuiTCliente_KeyPress);
+//            this.txtCuiTCliente.Leave += new System.EventHandler(this.txtCuiTCliente_Leave);
             // 
             // label5
             // 
@@ -215,6 +209,15 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.label2.TabIndex = 30;
             this.label2.Text = "CUIL/CUIT: ";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnGuardar);
+            this.panel2.Controls.Add(this.btnGuardarenVenta);
+            this.panel2.Location = new System.Drawing.Point(115, 458);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(517, 46);
+            this.panel2.TabIndex = 41;
+            // 
             // btnGuardar
             // 
             this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -237,14 +240,13 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.btnGuardarenVenta.UseVisualStyleBackColor = true;
             this.btnGuardarenVenta.Click += new System.EventHandler(this.btnGuardarenVenta_Click);
             // 
-            // panel2
+            // condicionTributariaBindingSource
             // 
-            this.panel2.Controls.Add(this.btnGuardar);
-            this.panel2.Controls.Add(this.btnGuardarenVenta);
-            this.panel2.Location = new System.Drawing.Point(115, 458);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(517, 46);
-            this.panel2.TabIndex = 41;
+            this.condicionTributariaBindingSource.DataSource = typeof(LaTiendaIS2021.Dominio.Modelo.CondicionTributaria);
+            // 
+            // bsCliente
+            // 
+            this.bsCliente.DataSource = typeof(LaTiendaIS2021.Dominio.Modelo.Cliente);
             // 
             // VistaAgregarCliente
             // 
@@ -257,13 +259,13 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.Name = "VistaAgregarCliente";
             this.Text = "VistaAgregarCliente";
             this.Load += new System.EventHandler(this.VistaAgregarCliente_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bsCliente)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.condicionTributariaBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.condicionTributariaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsCliente)).EndInit();
             this.ResumeLayout(false);
 
         }

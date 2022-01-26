@@ -1,6 +1,7 @@
-﻿using LaTiendaIS2021.Dominio.Contratos;
+﻿
 using LaTiendaIS2021.Dominio.Modelo;
 using LaTiendaIS2021.Presentacion.Vistas;
+using LaTiendaIS2021.Transversal;
 using System;
 using System.Windows.Forms;
 
@@ -22,7 +23,7 @@ namespace LaTiendaIS2021.Presentacion
 
             InitializeComponent();
             _presentador = presentador;
-
+            txtPass.PasswordChar = '*';
 
         }
 
@@ -136,10 +137,9 @@ namespace LaTiendaIS2021.Presentacion
             {
                 try
                 {
-                    SucursalManager.Inicio(suc);
-                    SucursalManager _suc = SucursalManager.GetInstance;
-                    PuntoVentaManager.Inicio(pv);
-                    PuntoVentaManager _pv = PuntoVentaManager.GetInstance;
+                    SessionManager.Inicio(suc, pv);
+                    SessionManager session = SessionManager.GetInstanceSession;
+
 
 
                 }
@@ -178,10 +178,6 @@ namespace LaTiendaIS2021.Presentacion
         private void btnLogin_Click(object sender, EventArgs e)
         {
 
-            WSLogin.LoginServiceClient service = new WSLogin.LoginServiceClient();
-
-            var aut = service.SolicitarAutorizacion("E52CE27F-0B1F-4DFE-A610-F2C32EEC6A97");
-
             User.usuario = txtUser.Text;
             User.contraseña = txtPass.Text;
             int Id = _presentador.BuscarUsuario(User);
@@ -191,7 +187,7 @@ namespace LaTiendaIS2021.Presentacion
                 {
                     User.Id = Id;
                     SessionManager.Login(User);
-                    SessionManager session = SessionManager.GetInstance;
+                    SessionManager session = SessionManager.GetInstanceSession;
 
                 }
                 catch (Exception ex)

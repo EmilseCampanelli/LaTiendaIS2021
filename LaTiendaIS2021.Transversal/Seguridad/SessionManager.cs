@@ -10,14 +10,22 @@ namespace LaTiendaIS2021.Transversal
         public DateTime FechaInicioSesion { get; set; }
 
         private static object _lock = new Object();
-        public static SessionManager GetInstance
+
+        public PuntoVenta PuntoVenta { get; set; }
+        public Sucursal Sucursal { get; set; }
+        public static SessionManager GetInstanceSession
         {
             get
             {
-                if (_session == null) throw new Exception("Sesión no iniciada");
+                if (_session.usuario == null) throw new Exception("Sesión no iniciada");
                 return _session;
             }
         }
+
+        
+
+     
+
         private SessionManager()
         {
 
@@ -47,6 +55,23 @@ namespace LaTiendaIS2021.Transversal
             }
         }
 
+
+        public static void Inicio(Sucursal sucursal, PuntoVenta pventa)
+        {
+            lock (_lock)
+            {
+                if (_session.usuario != null && _session.PuntoVenta == null && _session.Sucursal == null)
+                {
+
+                    _session.Sucursal = sucursal;
+                    _session.PuntoVenta = pventa;
+
+                }
+                else throw new Exception("Sucursal ya definida");
+            }
+        }
+
+        
 
     }
 }

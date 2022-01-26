@@ -14,8 +14,8 @@
         public virtual Sucursal Sucursal { get; set; }
         public virtual Talle Talle { get; set; }
 
-       
-        
+
+
 
 
     }

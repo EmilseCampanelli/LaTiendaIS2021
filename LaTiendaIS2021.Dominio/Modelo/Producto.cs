@@ -24,22 +24,7 @@ namespace LaTiendaIS2021.Dominio.Modelo
 
         public virtual Rubro Rubro { get; set; }
 
-        public virtual List<Stock> Stock { get; set; }
+        public virtual ICollection<Stock> Stock { get; set; }
 
-        public string MarcaDescripcion
-        {
-            get
-            {
-                return Marca?.Descripcion;
-            }
-        }
-
-        public string RubroDescripcion
-        {
-            get
-            {
-                return Rubro?.Descripcion;
-            }
-        }
     }
 }

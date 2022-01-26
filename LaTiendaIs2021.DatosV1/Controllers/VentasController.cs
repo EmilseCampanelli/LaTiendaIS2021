@@ -77,6 +77,8 @@ namespace LaTiendaIs2021.DatosV1.Controllers
                 return BadRequest(ModelState);
             }
 
+            var clienteId = venta.ClienteId;
+
             venta.Cliente = db.Clientes.Find(venta.ClienteId);
             venta.PuntoVenta = db.PuntoVentas.Find(venta.PuntoVentaId);
             venta.Usuario = db.Usuarios.Find(venta.UsuarioId);

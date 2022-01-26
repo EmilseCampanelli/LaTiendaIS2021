@@ -163,11 +163,6 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Connected Services\WDAfip\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\ColorsController.cs" />
     <Compile Include="Controllers\CondicionTributariasController.cs" />
@@ -223,136 +218,13 @@
       <DependentUpon>202112162220185_newVersion.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ConexionWS.cs" />
     <Compile Include="Models\ConsultaApi.cs" />
     <Compile Include="Models\Consultas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.CbteTipoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.ConceptoTipoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.DocTipoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.DummyResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECAEAConsultarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECAEAGetResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECAEARegInformativoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECAEAResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECAEASinMovConsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECAEASinMovimientoConsultarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECAEASinMovimientoInformarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECAEASinMovResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECAEASolicitarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECAEResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECAESolicitarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECompConsultaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECompConsultarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECompTotXRequestResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECompUltimoAutorizadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FECotizacionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FEDummyResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FEPaisResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FEParamGetCotizacionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FEParamGetPtosVentaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FEParamGetTiposCbteResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FEParamGetTiposConceptoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FEParamGetTiposDocResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FEParamGetTiposIvaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FEParamGetTiposMonedasResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FEParamGetTiposOpcionalResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FEParamGetTiposPaisesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FEParamGetTiposTributosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FEPtoVentaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FERecuperaLastCbteResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FERegXReqResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.FETributoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.IvaTipoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.MonedaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\WDAfip\LaTiendaIs2021.DatosV1.WDAfip.OpcionalTipoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\WDAfip\service.disco" />
-    <None Include="Connected Services\WDAfip\configuration91.svcinfo" />
-    <None Include="Connected Services\WDAfip\configuration.svcinfo" />
-    <None Include="Connected Services\WDAfip\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -381,7 +253,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <None Include="Connected Services\WDAfip\service.wsdl" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -436,6 +307,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LaTiendaIS2021.AccesoExterno\LaTiendaIS2021.AccesoExterno.csproj">
+      <Project>{a4322135-5e8a-4c32-97a2-82357974ced3}</Project>
+      <Name>LaTiendaIS2021.AccesoExterno</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LaTiendaIS2021.Dominio\LaTiendaIS2021.Dominio.csproj">
       <Project>{3f610824-7ebb-4982-a609-70e15a6ff499}</Project>
       <Name>LaTiendaIS2021.Dominio</Name>
@@ -472,9 +347,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\WDAfip\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

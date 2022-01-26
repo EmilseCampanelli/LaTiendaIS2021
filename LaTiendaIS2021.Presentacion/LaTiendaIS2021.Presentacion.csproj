@@ -62,11 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\WSLogin\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,21 +143,27 @@
     <EmbeddedResource Include="Vistas\VistaListaProducto.resx">
       <DependentUpon>VistaListaProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Connected Services\WSLogin\LaTiendaIS2021.Presentacion.WSLogin.Autorizacion.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WSLogin\LoginService.wsdl" />
-    <None Include="Connected Services\WSLogin\LoginService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WSLogin\LoginService1.wsdl" />
-    <None Include="Connected Services\WSLogin\LoginService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WSLogin\LoginService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.CbteTipoResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.ConceptoTipoResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.DocTipoResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.DummyResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.FECAEAGetResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.FECAEAResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.FECAEASinMovConsResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.FECAEASinMovResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.FECAEResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.FECompConsultaResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.FECotizacionResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.FEPaisResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.FEPtoVentaResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.FERecuperaLastCbteResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.FERegXReqResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.FETributoResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.IvaTipoResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.MonedaResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WDAfip.OpcionalTipoResponse.datasource" />
+    <None Include="Properties\DataSources\LaTiendaIs2021.DatosV1.WSLogin.Autorizacion.datasource" />
     <None Include="Properties\DataSources\LaTiendaIS2021.Dominio.Modelo.Cliente.datasource" />
     <None Include="Properties\DataSources\LaTiendaIS2021.Dominio.Modelo.CondicionTributaria.datasource" />
     <None Include="Properties\DataSources\LaTiendaIS2021.Dominio.Modelo.LineaVenta.datasource" />
@@ -185,6 +186,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LaTiendaIS2021.AccesoExterno\LaTiendaIS2021.AccesoExterno.csproj">
+      <Project>{a4322135-5e8a-4c32-97a2-82357974ced3}</Project>
+      <Name>LaTiendaIS2021.AccesoExterno</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LaTiendaIs2021.DatosV1\LaTiendaIs2021.DatosV1.csproj">
       <Project>{b6901190-7ad7-4884-9a37-174bbb4905f8}</Project>
       <Name>LaTiendaIs2021.DatosV1</Name>
@@ -193,27 +198,13 @@
       <Project>{3f610824-7ebb-4982-a609-70e15a6ff499}</Project>
       <Name>LaTiendaIS2021.Dominio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LaTiendaIS2021.Transversal\LaTiendaIS2021.Transversal.csproj">
+      <Project>{ab14f2ec-6c68-41f6-b001-2d8ba8e81ae5}</Project>
+      <Name>LaTiendaIS2021.Transversal</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\WSLogin\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WSLogin\LoginService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WSLogin\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WSLogin\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WSLogin\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

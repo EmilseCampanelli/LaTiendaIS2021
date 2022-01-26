@@ -1,7 +1,9 @@
 ﻿using LaTiendaIs2021.DatosV1.Models;
 using LaTiendaIS2021.Dominio.Contratos;
 using LaTiendaIS2021.Dominio.Modelo;
+using LaTiendaIS2021.Dominio.Servicios;
 using LaTiendaIS2021.Presentacion.Interfaces;
+using LaTiendaIS2021.Transversal;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,9 +18,10 @@ namespace LaTiendaIS2021.Presentacion
         IVistaListaCliente _ListaCliente;
         IVistaListaProducto _ListaProducto;
         IComprobante _Comprobante;
+        IConexion _WDS;
 
         Venta Venta;
-        public PresentadorPrincipal(IVistaAgregarProducto agregarProducto, IVistaAgregarCliente agregarCliente, IComprobante comprobante)
+        public PresentadorPrincipal(IVistaAgregarProducto agregarProducto, IVistaAgregarCliente agregarCliente, IComprobante comprobante, IConexion conexion)
         {
             _VistaCliente = agregarCliente;
             _VistaCliente.SetPresentador(this);
@@ -26,6 +29,7 @@ namespace LaTiendaIS2021.Presentacion
             _VistaProducto.SetPresentador(this);
             _Comprobante = comprobante;
             _Comprobante.SetPresentador(this);
+            _WDS = conexion;
         }
 
         #region Inicializacion
@@ -219,13 +223,14 @@ namespace LaTiendaIS2021.Presentacion
         }
         public void AgregarLineaVenta(LineaVenta Lventa)
         {
-            Venta.agregarLineaVenta(Lventa);
+           // Venta.agregarLineaVenta(Lventa);
+            Venta.LineaVenta.Add(Lventa);
 
         }
 
         public List<LineaVenta> MostrarLineaVenta()
         {
-            return Venta.LineaVenta;
+            return (List<LineaVenta>)Venta.LineaVenta;
         }
 
         public void EliminarLineaVenta(LineaVenta Lventa)
@@ -274,20 +279,20 @@ namespace LaTiendaIS2021.Presentacion
         }
         public Usuario DevolverUsuario()
         {
-            SessionManager session = SessionManager.GetInstance;
+            SessionManager session = SessionManager.GetInstanceSession;
             return session.usuario;
         }
 
         public Sucursal DevolverSucursal()
         {
-            SucursalManager _suc = SucursalManager.GetInstance;
-            return _suc.Sucursal;
+            SessionManager session = SessionManager.GetInstanceSession;
+            return session.Sucursal;
         }
 
         public PuntoVenta DevolverPVenta()
         {
-            PuntoVentaManager _pv = PuntoVentaManager.GetInstance;
-            return _pv.Pveta;
+            SessionManager session = SessionManager.GetInstanceSession;
+            return session.PuntoVenta;
         }
         #endregion
 
@@ -305,6 +310,26 @@ namespace LaTiendaIS2021.Presentacion
         public Venta ImprimirVenta()
         {
             return _VistaVenta.MostrarVenta();
+        }
+
+        #endregion
+
+
+        #region Conexion
+        public AdapterLogin GetAdapterLogin()
+        {
+            return _WDS.ConexionLogin();
+        }
+        public void IngresarAFIP(AdapterLogin adapter)
+        {
+            AccesoExterno.WSAfip.ServiceSoapClient service = new AccesoExterno.WSAfip.ServiceSoapClient();
+            service.FEDummy();
+            AccesoExterno.WSAfip.FEAuthRequest auth = new AccesoExterno.WSAfip.FEAuthRequest();
+            auth.Cuit = adapter.Cuit;
+            auth.Sign = adapter.Sing;
+            auth.Token = adapter.Token;
+            var ser = service.FECAESolicitar(auth, new AccesoExterno.WSAfip.FECAERequest());
+
         }
 
         #endregion

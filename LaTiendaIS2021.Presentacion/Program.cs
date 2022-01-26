@@ -1,4 +1,6 @@
-﻿using LaTiendaIS2021.Presentacion.Interfaces;
+﻿using LaTiendaIs2021.DatosV1.Models;
+using LaTiendaIS2021.Dominio.Contratos;
+using LaTiendaIS2021.Presentacion.Interfaces;
 using LaTiendaIS2021.Presentacion.Vistas;
 using System;
 using System.Windows.Forms;
@@ -25,6 +27,7 @@ namespace LaTiendaIS2021.Presentacion
             contenedor.RegisterType<IVistaRegistrarVenta, RealizarVenta>();
             contenedor.RegisterType<IVistaListaCliente, VistaListaCliente>();
             contenedor.RegisterType<IVistaListaProducto, VistaListaProducto>();
+            contenedor.RegisterType<IConexion, ConexionWS>();
             contenedor.RegisterType<IComprobante, Comprobante>();
             var vista = contenedor.Resolve<Form1>();
             Application.Run(vista);

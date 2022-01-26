@@ -1,4 +1,5 @@
 ﻿using LaTiendaIS2021.Dominio.Modelo;
+using LaTiendaIS2021.Dominio.Servicios;
 using LaTiendaIS2021.Presentacion.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
         List<LineaVenta> lstLineaVenta = new List<LineaVenta>();
         Venta Venta = new Venta();
         Cliente cliente = new Cliente();
+        AdapterLogin adapter = new AdapterLogin();
         public RealizarVenta(PresentadorPrincipal presentador)
         {
             _presentador = presentador;
@@ -65,28 +67,38 @@ namespace LaTiendaIS2021.Presentacion.Vistas
         }
         private async void btnConfirmarVenta_Click(object sender, EventArgs e)
         {
-            if (cliente.Id == 0)
-            {
-                cliente = await _presentador.BuscarClienteAsync("1");
-            }
+           
+                adapter = _presentador.GetAdapterLogin();
+                _presentador.IngresarAFIP(adapter);
+
+                if (true)
+                {
+                    if (cliente.Id == 0)
+                    {
+                        cliente = await _presentador.BuscarClienteAsync("1");
+                    }
 
 
-            Venta = _presentador.GuardarVenta(DevolverVenta());
+                    Venta = _presentador.GuardarVenta(DevolverVenta());
 
-            if (Venta == null)
-            {
-                MessageBox.Show("Usted debe agregar un cliente");
-                btnAgregarCliente_Click(sender, e);
-                Venta = _presentador.GuardarVenta(DevolverVenta());
-            }
+                    if (Venta == null)
+                    {
+                        MessageBox.Show("Usted debe agregar un cliente");
+                        btnAgregarCliente_Click(sender, e);
+                        Venta = _presentador.GuardarVenta(DevolverVenta());
+                    }
+                }
+                
+          
+           
 
-            foreach (var l in lstLineaVenta)
+          /* foreach (var l in lstLineaVenta)
             {
                 l.VentaId = Venta.id;
                 _presentador.GuardarLineaVenta(l);
             }
 
-            _presentador.GenerarComprobante();
+            _presentador.GenerarComprobante();*/
 
         }
 

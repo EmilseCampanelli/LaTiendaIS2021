@@ -24,13 +24,13 @@ namespace LaTiendaIs2021.DatosV1.Controllers
 
         // GET: api/Stocks/5
         [ResponseType(typeof(Stock))]
-        public List<Stock> GetStock(int codProd)
+        public IHttpActionResult GetStock(int codProd)
         {
-            var stock = from s in db.Stocks
+            var stock = (from s in db.Stocks
                         where s.Producto.Codigo == codProd
-                        select s;
+                        select s).ToList();
 
-            return stock.ToList();
+            return Json(stock, new Newtonsoft.Json.JsonSerializerSettings { ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore });
         }
 
         // PUT: api/Stocks/5
