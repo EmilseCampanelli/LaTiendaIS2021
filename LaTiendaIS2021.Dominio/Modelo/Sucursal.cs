@@ -8,6 +8,7 @@ namespace LaTiendaIS2021.Dominio.Modelo
         public string Descripcion { get; set; }
 
         public virtual ICollection<PuntoVenta> PuntoVentas { get; set; }
-        public virtual ICollection<Stock> Stocks { get; set; }
+
+        //public virtual ICollection<Stock> Stocks { get; set; }
     }
 }

@@ -218,7 +218,6 @@
       <DependentUpon>202112162220185_newVersion.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ConexionWS.cs" />
     <Compile Include="Models\ConsultaApi.cs" />
     <Compile Include="Models\Consultas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -27,14 +27,7 @@ namespace LaTiendaIS2021.Presentacion
 
         }
 
-        public async void Inicializador()
-        {
-            cbxSucursal.DataSource = await _presentador.GetSucursals();
-            cbxSucursal.DisplayMember = "Descripcion";
-            cbxSucursal.ValueMember = "Id";
-
-
-        }
+      
         private void agregarProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Bloquear();
@@ -107,21 +100,60 @@ namespace LaTiendaIS2021.Presentacion
             menuStrip1.Visible = true;
         }
 
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+       
+        private void btnLogin_Click(object sender, EventArgs e)
         {
-            Bloquear();
 
-            try
+            User.usuario = txtUser.Text;
+            User.contraseña = txtPass.Text;
+            int Id = _presentador.BuscarUsuario(User);
+            if (Id != 0)
             {
-                SessionManager.Logout();
+                try
+                {
+                    User.Id = Id;
+                    SessionManager.Login(User);
+                    SessionManager session = SessionManager.GetInstanceSession;
 
-                Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            pnlLogin.Visible = false;
+
+            Inicializador();
+
+            pnlSucursal.Visible = true;
+
+
+
+
+
+
+        }
+        public async void Inicializador()
+        {
+            cbxSucursal.DataSource = await _presentador.GetSucursals();
+            cbxSucursal.DisplayMember = "Descripcion";
+            cbxSucursal.ValueMember = "Id";
+
+
+        }
+        private async void cbxSucursal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Sucursal suc = (Sucursal)cbxSucursal.SelectedItem;
+
+            var lstPventa = await _presentador.GetPventa(suc.Id);
+
+            cbxPVenta.DataSource = lstPventa;
+            cbxPVenta.DisplayMember = "Descripcion";
+            cbxPVenta.ValueMember = "Id";
+
+
+
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -152,18 +184,21 @@ namespace LaTiendaIS2021.Presentacion
             pnlSucursal.Visible = false;
         }
 
-        private async void cbxSucursal_SelectedIndexChanged(object sender, EventArgs e)
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Sucursal suc = (Sucursal)cbxSucursal.SelectedItem;
+            Bloquear();
 
-            var lstPventa = await _presentador.GetPventa(suc.Id);
+            try
+            {
+                SessionManager.Logout();
 
-            cbxPVenta.DataSource = lstPventa;
-            cbxPVenta.DisplayMember = "Descripcion";
-            cbxPVenta.ValueMember = "Id";
+                Close();
 
-
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void Bloquear()
@@ -175,38 +210,6 @@ namespace LaTiendaIS2021.Presentacion
             btnIngresar.Visible = false;
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-
-            User.usuario = txtUser.Text;
-            User.contraseña = txtPass.Text;
-            int Id = _presentador.BuscarUsuario(User);
-            if (Id != 0)
-            {
-                try
-                {
-                    User.Id = Id;
-                    SessionManager.Login(User);
-                    SessionManager session = SessionManager.GetInstanceSession;
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-
-            pnlLogin.Visible = false;
-
-            Inicializador();
-
-            pnlSucursal.Visible = true;
-
-           
-           
-
-
-            
-        }
+      
     }
 }

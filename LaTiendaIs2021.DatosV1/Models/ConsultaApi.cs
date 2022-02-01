@@ -11,11 +11,19 @@ namespace LaTiendaIs2021.DatosV1.Models
     {
         public static async Task<string> GetHttp(string url)
         {
+            try
+            {
+                WebRequest oRequest = WebRequest.Create(url);
+                WebResponse oResponse = oRequest.GetResponse();
+                StreamReader sr = new StreamReader(oResponse.GetResponseStream());
+                return await sr.ReadToEndAsync();
+            }
+            catch(WebException e)
+            {
+                string pageContent = new StreamReader(e.Response.GetResponseStream()).ReadToEnd().ToString();
+                return pageContent;
+            }
             
-            WebRequest oRequest = WebRequest.Create(url);
-            WebResponse oResponse = oRequest.GetResponse();
-            StreamReader sr = new StreamReader(oResponse.GetResponseStream());
-            return await sr.ReadToEndAsync();
         }
 
         //Post

@@ -69,8 +69,12 @@ namespace LaTiendaIS2021.Presentacion.Vistas
         {
            
                 adapter = _presentador.GetAdapterLogin();
-                _presentador.IngresarAFIP(adapter);
+            // _presentador.IngresarAFIP(adapter);
+            if (adapter != null)
+            {
 
+            }
+            else { MessageBox.Show("Algo Fallo"); }
                 if (true)
                 {
                     if (cliente.Id == 0)

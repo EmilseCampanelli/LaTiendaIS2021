@@ -1,5 +1,6 @@
 ﻿using LaTiendaIs2021.DatosV1.Data;
 using LaTiendaIS2021.Dominio.Modelo;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -12,9 +13,17 @@ namespace LaTiendaIs2021.DatosV1.Controllers
         private LaTiendaIs2021DatosV1Context db = new LaTiendaIs2021DatosV1Context();
 
         // GET: api/Sucursals
-        public IQueryable<Sucursal> GetSucursals()
+        public IHttpActionResult GetSucursals()
         {
-            return db.Sucursals;
+            try
+            {
+                var s = db.Sucursals;
+                return Json(s, new Newtonsoft.Json.JsonSerializerSettings { ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore });
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         // GET: api/Sucursals/5

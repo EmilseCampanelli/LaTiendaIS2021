@@ -1,5 +1,6 @@
 ﻿using LaTiendaIs2021.DatosV1.Data;
 using LaTiendaIS2021.Dominio.Modelo;
+using System;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,13 +21,23 @@ namespace LaTiendaIs2021.DatosV1.Controllers
 
         // GET: api/PuntoVentas/5
         [ResponseType(typeof(PuntoVenta))]
-        public async Task<IHttpActionResult> GetPuntoVenta(int suc)
+        public IHttpActionResult GetPuntoVenta(int suc)
         {
-            var pv = (from i in db.PuntoVentas
-                      where i.SucursalId == suc
-                      select i);
+            try
+            {
+                var pv = (from i in db.PuntoVentas
+                          where i.SucursalId == suc
+                          select i).ToList();
 
-            return Ok(pv.ToList());
+                return Json(pv, new Newtonsoft.Json.JsonSerializerSettings { ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore });
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+          
         }
 
 

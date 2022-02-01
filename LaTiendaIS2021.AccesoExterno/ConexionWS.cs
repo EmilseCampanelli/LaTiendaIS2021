@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace LaTiendaIs2021.DatosV1.Models
+namespace LaTiendaIS2021.AccesoExterno
 {
     public class ConexionWS: IConexion
     {
