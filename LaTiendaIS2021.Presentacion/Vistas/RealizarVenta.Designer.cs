@@ -56,12 +56,6 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.medio = new System.Windows.Forms.Panel();
             this.medioMedio = new System.Windows.Forms.Panel();
             this.dgvLv = new System.Windows.Forms.DataGridView();
-            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioVentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.marcaDescripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rubroDescripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -73,7 +67,13 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.btnAgregar = new System.Windows.Forms.Button();
             this.txtBuscarProducto = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lineaVentaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MarcaDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RubroDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioVentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.abajo.SuspendLayout();
             this.panel3.SuspendLayout();
             this.arriba.SuspendLayout();
@@ -85,8 +85,8 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.medio.SuspendLayout();
             this.medioMedio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudCantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lineaVentaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -374,51 +374,15 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.dgvLv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoDataGridViewTextBoxColumn,
             this.descripcionDataGridViewTextBoxColumn,
-            this.precioVentaDataGridViewTextBoxColumn,
-            this.marcaDescripcionDataGridViewTextBoxColumn,
-            this.rubroDescripcionDataGridViewTextBoxColumn});
+            this.MarcaDescripcion,
+            this.RubroDescripcion,
+            this.precioVentaDataGridViewTextBoxColumn});
             this.dgvLv.DataSource = this.productoBindingSource;
             this.dgvLv.Location = new System.Drawing.Point(10, 44);
             this.dgvLv.Name = "dgvLv";
             this.dgvLv.Size = new System.Drawing.Size(541, 190);
             this.dgvLv.TabIndex = 20;
             this.dgvLv.Click += new System.EventHandler(this.dgvLV_Click);
-            // 
-            // codigoDataGridViewTextBoxColumn
-            // 
-            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
-            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            // 
-            // precioVentaDataGridViewTextBoxColumn
-            // 
-            this.precioVentaDataGridViewTextBoxColumn.DataPropertyName = "PrecioVenta";
-            this.precioVentaDataGridViewTextBoxColumn.HeaderText = "PrecioVenta";
-            this.precioVentaDataGridViewTextBoxColumn.Name = "precioVentaDataGridViewTextBoxColumn";
-            // 
-            // marcaDescripcionDataGridViewTextBoxColumn
-            // 
-            this.marcaDescripcionDataGridViewTextBoxColumn.DataPropertyName = "MarcaDescripcion";
-            this.marcaDescripcionDataGridViewTextBoxColumn.HeaderText = "Marca";
-            this.marcaDescripcionDataGridViewTextBoxColumn.Name = "marcaDescripcionDataGridViewTextBoxColumn";
-            this.marcaDescripcionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // rubroDescripcionDataGridViewTextBoxColumn
-            // 
-            this.rubroDescripcionDataGridViewTextBoxColumn.DataPropertyName = "RubroDescripcion";
-            this.rubroDescripcionDataGridViewTextBoxColumn.HeaderText = "Rubro";
-            this.rubroDescripcionDataGridViewTextBoxColumn.Name = "rubroDescripcionDataGridViewTextBoxColumn";
-            this.rubroDescripcionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // productoBindingSource
-            // 
-            this.productoBindingSource.DataSource = typeof(LaTiendaIS2021.Dominio.Modelo.Producto);
             // 
             // label8
             // 
@@ -520,9 +484,45 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.label2.TabIndex = 7;
             this.label2.Text = "CODIGO PRODUCTO: ";
             // 
+            // productoBindingSource
+            // 
+            this.productoBindingSource.DataSource = typeof(LaTiendaIS2021.Dominio.Modelo.Producto);
+            // 
             // lineaVentaBindingSource
             // 
             this.lineaVentaBindingSource.DataSource = typeof(LaTiendaIS2021.Dominio.Modelo.LineaVenta);
+            // 
+            // codigoDataGridViewTextBoxColumn
+            // 
+            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
+            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            // 
+            // descripcionDataGridViewTextBoxColumn
+            // 
+            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            // 
+            // MarcaDescripcion
+            // 
+            this.MarcaDescripcion.DataPropertyName = "MarcaDescripcion";
+            this.MarcaDescripcion.HeaderText = "MarcaDescripcion";
+            this.MarcaDescripcion.Name = "MarcaDescripcion";
+            this.MarcaDescripcion.ReadOnly = true;
+            // 
+            // RubroDescripcion
+            // 
+            this.RubroDescripcion.DataPropertyName = "RubroDescripcion";
+            this.RubroDescripcion.HeaderText = "RubroDescripcion";
+            this.RubroDescripcion.Name = "RubroDescripcion";
+            this.RubroDescripcion.ReadOnly = true;
+            // 
+            // precioVentaDataGridViewTextBoxColumn
+            // 
+            this.precioVentaDataGridViewTextBoxColumn.DataPropertyName = "PrecioVenta";
+            this.precioVentaDataGridViewTextBoxColumn.HeaderText = "PrecioVenta";
+            this.precioVentaDataGridViewTextBoxColumn.Name = "precioVentaDataGridViewTextBoxColumn";
             // 
             // RealizarVenta
             // 
@@ -551,8 +551,8 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.medioMedio.ResumeLayout(false);
             this.medioMedio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudCantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lineaVentaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -600,10 +600,12 @@ namespace LaTiendaIS2021.Presentacion.Vistas
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dgvLv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioVentaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn marcaDescripcionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rubroDescripcionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MarcaDescripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RubroDescripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioVentaDataGridViewTextBoxColumn;
     }
 }

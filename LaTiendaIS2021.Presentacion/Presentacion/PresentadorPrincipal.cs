@@ -198,18 +198,14 @@ namespace LaTiendaIS2021.Presentacion
             }
             else
             {
+                venta.ConfirmarVenta();
                 string url = "https://localhost:44332/api/Ventas";
                 string result = ConsultaApi.Send<Venta>(url, venta, "POST");
                 return JsonConvert.DeserializeObject<Venta>(result);
             }
 
         }
-        public void GuardarLineaVenta(LineaVenta Lventa)
-        {
-            DescontarStock(Lventa);
-            string url = "https://localhost:44332/api/LineaVentas";
-            string result = ConsultaApi.Send<LineaVenta>(url, Lventa, "POST");
-        }
+       
 
         public void DescontarStock(LineaVenta lVenta)
         {

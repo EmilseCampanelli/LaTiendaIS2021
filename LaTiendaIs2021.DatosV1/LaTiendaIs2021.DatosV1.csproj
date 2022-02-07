@@ -220,6 +220,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ConsultaApi.cs" />
     <Compile Include="Models\Consultas.cs" />
+    <Compile Include="Models\DTO\VentaDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

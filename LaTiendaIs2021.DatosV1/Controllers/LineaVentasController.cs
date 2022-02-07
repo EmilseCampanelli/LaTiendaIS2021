@@ -15,9 +15,11 @@ namespace LaTiendaIs2021.DatosV1.Controllers
         private LaTiendaIs2021DatosV1Context db = new LaTiendaIs2021DatosV1Context();
 
         // GET: api/LineaVentas
-        public IQueryable<LineaVenta> GetLineaVentas()
+        public IHttpActionResult GetLineaVentas()
         {
-            return db.LineaVentas;
+            var lv= db.LineaVentas;
+
+            return Json(lv, new Newtonsoft.Json.JsonSerializerSettings { ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore });
         }
 
         // GET: api/LineaVentas/5

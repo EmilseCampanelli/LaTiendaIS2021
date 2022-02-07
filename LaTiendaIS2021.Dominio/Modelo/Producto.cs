@@ -5,6 +5,10 @@ namespace LaTiendaIS2021.Dominio.Modelo
     public class Producto
     {
 
+        public Producto()
+        {
+            this.Stock = new List<Stock>();
+        }
         public int Id { get; set; }
         public int? Codigo { get; set; }
         public string Descripcion { get; set; }
@@ -25,6 +29,24 @@ namespace LaTiendaIS2021.Dominio.Modelo
         public virtual Rubro Rubro { get; set; }
 
         public virtual ICollection<Stock> Stock { get; set; }
+
+        public string MarcaDescripcion
+        {
+            get { return Marca?.Descripcion; }
+        }
+
+        public string RubroDescripcion
+        {
+            get { return Rubro?.Descripcion; }
+        }
+
+
+        
+
+        public void SetStock(Stock stock, int Cantidad)
+        {
+            stock.cantidad -= Cantidad;
+        }
 
     }
 }

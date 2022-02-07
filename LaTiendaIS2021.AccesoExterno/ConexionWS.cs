@@ -13,7 +13,9 @@ namespace LaTiendaIS2021.AccesoExterno
 
         public void ConexionAfip(AdapterLogin adapter)
         {
-            throw new NotImplementedException();
+            LaTiendaIS2021.AccesoExterno.WSAfip.ServiceSoapClient client = new WSAfip.ServiceSoapClient();
+
+            
         }
 
         public AdapterLogin ConexionLogin()

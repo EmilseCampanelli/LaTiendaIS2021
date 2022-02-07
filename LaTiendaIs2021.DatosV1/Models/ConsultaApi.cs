@@ -44,7 +44,7 @@ namespace LaTiendaIs2021.DatosV1.Models
                 request.Method = method;
                 request.PreAuthenticate = true;
                 request.ContentType = "application/json;charset=utf-8'";
-                request.Timeout = 10000; //esto es opcional
+              //  request.Timeout = 10000; //esto es opcional
 
                 using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {

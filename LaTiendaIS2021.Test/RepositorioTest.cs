@@ -9,10 +9,51 @@ namespace LaTiendaIS2021.Test
         public static RepositorioTest Datos = new RepositorioTest();
 
         List<Producto> productos { get; set; }
-        List<LineaVenta> lineaVentas { get; set; }
-        List<Venta> ventas { get; set; }
+        public List<LineaVenta> lineaVentas { get; set; }
+        public List<Venta> ventas { get; set; }
+
+        public List<Stock> stocks { get; set; }
         public RepositorioTest()
         {
+            stocks = new List<Stock>()
+            {
+                new Stock()
+                {
+                    id=1,
+                    cantidad= 20,
+                    ColorId=1,
+                    ProductoId=1,
+                    SucursalId=1,
+                    TalleId=1
+                },
+                new Stock()
+                {
+                    id=1,
+                    cantidad= 20,
+                    ColorId=2,
+                    ProductoId=1,
+                    SucursalId=1,
+                    TalleId=1
+                },
+                new Stock()
+                {
+                    id=1,
+                    cantidad= 20,
+                    ColorId=1,
+                    ProductoId=1,
+                    SucursalId=1,
+                    TalleId=2
+                },
+                new Stock()
+                {
+                    id=1,
+                    cantidad= 20,
+                    ColorId=1,
+                    ProductoId=2,
+                    SucursalId=1,
+                    TalleId=1
+                },
+            };
 
             productos = new List<Producto>()
             {
@@ -27,6 +68,17 @@ namespace LaTiendaIS2021.Test
                     MarcaId = 1,
                     RubroId = 1
                 },
+                 new Producto()
+                {
+                    Id = 1,
+                    Codigo = 2,
+                    Descripcion = "Jean",
+                    CostoSinIva = 300,
+                    MargenGanancia = 30,
+                    PorcentajeIva = 21,
+                    MarcaId = 1,
+                    RubroId = 1
+                }
              };
 
             lineaVentas = new List<LineaVenta>()

@@ -1,5 +1,6 @@
 ﻿using LaTiendaIs2021.DatosV1.Data;
 using LaTiendaIS2021.Dominio.Modelo;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -70,24 +71,52 @@ namespace LaTiendaIs2021.DatosV1.Controllers
 
         // POST: api/Ventas
         [ResponseType(typeof(Venta))]
-        public async Task<IHttpActionResult> PostVenta(Venta venta)
+        public IHttpActionResult PostVenta(Venta venta)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var clienteId = venta.ClienteId;
+            try
+            {
+                venta.Cliente = db.Clientes?.Find(venta.ClienteId);
+                venta.PuntoVenta = db.PuntoVentas?.Find(venta.PuntoVentaId);
+                venta.Usuario = db.Usuarios?.Find(venta.UsuarioId);
 
-            venta.Cliente = db.Clientes.Find(venta.ClienteId);
-            venta.PuntoVenta = db.PuntoVentas.Find(venta.PuntoVentaId);
-            venta.Usuario = db.Usuarios.Find(venta.UsuarioId);
+                foreach(var lv in venta.LineaVenta)
+                {
+                    lv.Talle = db.Talles?.Find(lv.TalleId);
+                    lv.Color = db.Colors?.Find(lv.ColorId);
+                 
+                    var stock = lv.Producto.Stock;
+                    lv.Producto = db.Productoes?.Find(lv.ProductoId);
 
-            db.Ventas.Add(venta);
-            await db.SaveChangesAsync();
+                    foreach(var s in stock)
+                    {
+                        s.Color = db.Colors?.Find(s.ColorId);
+                        s.Talle = db.Talles?.Find(s.TalleId);
+                        s.Sucursal = db.Sucursals?.Find(s.SucursalId);
 
-            venta.id = db.Entry(venta).Entity.id;
-            return Ok(venta);
+                        db.Entry(s).State = EntityState.Modified;
+                       
+                    }
+                   
+
+                }
+            
+
+                db.Ventas.Add(venta);
+                db.SaveChanges();
+
+                venta.id = db.Entry(venta).Entity.id;
+                return Ok(venta);
+            }
+            catch (Exception e)
+            {
+                return Ok(e);
+            }
+            
         }
 
         // DELETE: api/Ventas/5

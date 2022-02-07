@@ -92,17 +92,10 @@ namespace LaTiendaIS2021.Presentacion.Vistas
                         Venta = _presentador.GuardarVenta(DevolverVenta());
                     }
                 }
-                
-          
-           
 
-          /* foreach (var l in lstLineaVenta)
-            {
-                l.VentaId = Venta.id;
-                _presentador.GuardarLineaVenta(l);
-            }
+            _presentador.GenerarComprobante();
 
-            _presentador.GenerarComprobante();*/
+
 
         }
 

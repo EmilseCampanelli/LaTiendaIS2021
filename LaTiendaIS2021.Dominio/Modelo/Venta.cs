@@ -10,7 +10,7 @@ namespace LaTiendaIS2021.Dominio.Modelo
         {
 
             //CalcularTotalVenta();
-            this.LineaVenta = new HashSet<LineaVenta>();
+            this.LineaVenta = new List<LineaVenta>();
 
         }
         public virtual ICollection<LineaVenta> LineaVenta { get; set; }
@@ -46,42 +46,20 @@ namespace LaTiendaIS2021.Dominio.Modelo
             StockUpdate();
         }
 
-        //Colocar en la Linea de venta solo dentro del foreach
+
+
+        
         private void StockUpdate()
         {
             foreach (var lv in LineaVenta)
             {
                 var prod = lv.Producto;
-                if (GetStock(prod) != null)
-                {
-                    if (GetStock(prod).ColorId == lv.ColorId && GetStock(prod).TalleId == lv.TalleId)
-                    {
-                        Stock s = GetStock(prod);
-                        if(s.SucursalId == PuntoVenta.SucursalId)
-                        {
-                            SetStock(s, lv);
-                        }
-                        
-                    }
-                }
+                lv.StockUpdate(prod, PuntoVenta.SucursalId );
             }
         }
 
-        //Colorcar en el producto
-        //Comparar la sucursal
-        public Stock GetStock(Producto producto)
-        {
-            foreach (var stock in producto.Stock)
-            {
-                return stock;
-            }
-            return null;
-        }
-
-        public void SetStock(Stock stock, LineaVenta lineaVenta)
-        {
-            stock.cantidad -= lineaVenta.cantidad;
-        }
+        
+      
     }
 
 

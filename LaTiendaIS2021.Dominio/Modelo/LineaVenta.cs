@@ -32,6 +32,22 @@
 
         }
 
+        public void StockUpdate(Producto producto, int sucursal)
+        {
+            if(Producto?.Stock!= null)
+            {
+                var stocks = Producto.Stock;
+                foreach(var stock in stocks)
+                {
+                    if (stock.ColorId == ColorId && stock.TalleId == TalleId && stock.SucursalId == sucursal)
+                    {
+                        Producto?.SetStock(stock, (int)cantidad);
+                    }
+                }
+                
+            }       
+        }
+
 
     }
 }
