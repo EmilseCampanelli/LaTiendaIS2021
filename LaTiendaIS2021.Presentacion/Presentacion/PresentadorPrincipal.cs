@@ -1,4 +1,5 @@
 ﻿using LaTiendaIs2021.DatosV1.Models;
+using LaTiendaIS2021.AccesoExterno.WSAfip;
 using LaTiendaIS2021.Dominio.Contratos;
 using LaTiendaIS2021.Dominio.Modelo;
 using LaTiendaIS2021.Dominio.Servicios;
@@ -207,16 +208,6 @@ namespace LaTiendaIS2021.Presentacion
         }
        
 
-        public void DescontarStock(LineaVenta lVenta)
-        {
-            var stock = new Stock();
-            stock.ProductoId = lVenta.ProductoId;
-            stock.TalleId = lVenta.TalleId;
-            stock.ColorId = lVenta.ColorId;
-            stock.cantidad = lVenta.cantidad;
-
-            
-        }
         public void AgregarLineaVenta(LineaVenta Lventa)
         {
            // Venta.agregarLineaVenta(Lventa);
@@ -263,6 +254,11 @@ namespace LaTiendaIS2021.Presentacion
         public decimal ActualizarTotalVenta()
         {
             return Venta.CalcularTotalVenta();
+        }
+
+        public Cliente ClientePorDefecto()
+        {
+           return Venta.ClientDefault();
         }
         #endregion
 
@@ -316,19 +312,70 @@ namespace LaTiendaIS2021.Presentacion
         {
             return _WDS.ConexionLogin();
         }
-        public void IngresarAFIP(AdapterLogin adapter)
+        public AdapterAfipResponse IngresarAFIP(AdapterLogin adapter, Venta venta)
         {
-            AccesoExterno.WSAfip.ServiceSoapClient service = new AccesoExterno.WSAfip.ServiceSoapClient();
-            service.FEDummy();
-            AccesoExterno.WSAfip.FEAuthRequest auth = new AccesoExterno.WSAfip.FEAuthRequest();
-            auth.Cuit = adapter.Cuit;
-            auth.Sign = adapter.Sing;
-            auth.Token = adapter.Token;
-            var ser = service.FECAESolicitar(auth, new AccesoExterno.WSAfip.FECAERequest());
+        
+
+            CabComp cab = new CabComp();
+            cab.PtoVta = int.Parse(venta.PuntoVenta.descripcion);
+            cab.CbteTipo = TpoComp(venta.Cliente);
+
+
+            var detReq = DetRequest(venta);
+
+
+            return  _WDS.ConexionAfip(adapter,cab, detReq); 
 
         }
 
-        #endregion
+        private DetComp DetRequest(Venta venta)
+        {
+            DetComp det = new DetComp();
+            det.Concepto = (int)venta.Conceptos;
+            det.DocTipo = 80;
+            det.DocNro = long.Parse(venta.Cliente.Cuit);
+            det.ImpTotal = (double)venta.total;
+            det.PorcentajeIVA = 21;
+            det.ImpTotConc = det.ImpTotal;
+            det.MonCotiz = 1;
+            det.CbtFch = Fech(venta);
 
+
+
+            return det;
+        }
+
+        private string Fech(Venta venta)
+        {
+            var month = venta.fecha.Value.Month.ToString();
+            if (month.Length == 1)
+            {
+                month = "0" + month; 
+            }
+            var day = venta.fecha.Value.Day.ToString();
+            if (day.Length == 1)
+            {
+                day = "0" + day;
+            }
+
+            var year = venta.fecha.Value.Year.ToString();
+
+            return year + month + day;
+
+
+        }
+        private int TpoComp(Cliente cliente)
+        {
+            if (cliente.CondicionTributaria.Letra == "A")
+            {
+                return 1;
+            }
+            else return 6;
+        }
+
+       
+        #endregion
+        
+        
     }
 }

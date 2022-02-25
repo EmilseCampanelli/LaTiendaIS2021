@@ -12,9 +12,10 @@ namespace LaTiendaIs2021.DatosV1.Controllers
         private LaTiendaIs2021DatosV1Context db = new LaTiendaIs2021DatosV1Context();
 
         // GET: api/CondicionTributarias
-        public IQueryable<CondicionTributaria> GetCondicionTributarias()
+        public IHttpActionResult GetCondicionTributarias()
         {
-            return db.CondicionTributarias;
+            var cond = db.CondicionTributarias;
+            return Ok(cond);
         }
 
         // GET: api/CondicionTributarias/5

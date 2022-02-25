@@ -26,6 +26,7 @@ namespace LaTiendaIs2021.DatosV1.Controllers
 
         // GET: api/Productoes/5
        // [ResponseType(typeof(Producto))]
+       
         public IHttpActionResult GetProducto(int codProd)
         {
             try

@@ -84,6 +84,7 @@ namespace LaTiendaIs2021.DatosV1.Controllers
                 venta.PuntoVenta = db.PuntoVentas?.Find(venta.PuntoVentaId);
                 venta.Usuario = db.Usuarios?.Find(venta.UsuarioId);
 
+                
                 foreach(var lv in venta.LineaVenta)
                 {
                     lv.Talle = db.Talles?.Find(lv.TalleId);
@@ -101,8 +102,7 @@ namespace LaTiendaIs2021.DatosV1.Controllers
                         db.Entry(s).State = EntityState.Modified;
                        
                     }
-                   
-
+             
                 }
             
 

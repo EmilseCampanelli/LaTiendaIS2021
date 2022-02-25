@@ -41,8 +41,6 @@ namespace LaTiendaIs2021.DatosV1.Data
 
         public System.Data.Entity.DbSet<LaTiendaIS2021.Dominio.Modelo.Stock> Stocks { get; set; }
 
-
-
-
+       
     }
 }

@@ -18,6 +18,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
         Venta Venta = new Venta();
         Cliente cliente = new Cliente();
         AdapterLogin adapter = new AdapterLogin();
+        AdapterAfipResponse _adapterAfip = new AdapterAfipResponse();
         public RealizarVenta(PresentadorPrincipal presentador)
         {
             _presentador = presentador;
@@ -67,33 +68,34 @@ namespace LaTiendaIS2021.Presentacion.Vistas
         }
         private async void btnConfirmarVenta_Click(object sender, EventArgs e)
         {
-           
-                adapter = _presentador.GetAdapterLogin();
-            // _presentador.IngresarAFIP(adapter);
+            var venta = DevolverVenta();
+            adapter = _presentador.GetAdapterLogin();
+          
             if (adapter != null)
             {
-
+               _adapterAfip = _presentador.IngresarAFIP(adapter, venta);
             }
             else { MessageBox.Show("Algo Fallo"); }
-                if (true)
+            if (_adapterAfip != null)
+            {
+                Venta = _presentador.GuardarVenta(venta);
+
+                if (Venta == null)
                 {
-                    if (cliente.Id == 0)
-                    {
-                        cliente = await _presentador.BuscarClienteAsync("1");
-                    }
-
-
-                    Venta = _presentador.GuardarVenta(DevolverVenta());
-
-                    if (Venta == null)
-                    {
                         MessageBox.Show("Usted debe agregar un cliente");
                         btnAgregarCliente_Click(sender, e);
-                        Venta = _presentador.GuardarVenta(DevolverVenta());
-                    }
+                        Venta = _presentador.GuardarVenta(venta);
                 }
+                MessageBox.Show(_adapterAfip.CAE);
 
-            _presentador.GenerarComprobante();
+                _presentador.GenerarComprobante();
+            }
+            else
+            {
+                MessageBox.Show("Fallo la conexion con el AFIP");
+            }
+
+            
 
 
 
@@ -114,6 +116,10 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             Venta venta = new Venta();
             venta.fecha = DateTime.Now;
             venta.total = decimal.Parse(txtTotal.Text);
+            if (cliente.Id == 0)
+            {
+                cliente = _presentador.ClientePorDefecto();
+            }
             venta.Cliente = cliente;
             venta.ClienteId = cliente.Id;
             venta.PuntoVenta = _presentador.DevolverPVenta();
@@ -121,6 +127,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             venta.Usuario = _presentador.DevolverUsuario();
             venta.UsuarioId = venta.Usuario.Id;
             venta.LineaVenta = lstLineaVenta;
+            venta.Conceptos = (Conceptos)1;
 
             return venta;
         }

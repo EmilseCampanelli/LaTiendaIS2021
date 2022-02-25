@@ -46,11 +46,14 @@
     <Compile Include="Modelo-View\viewComprobante.cs" />
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\Color.cs" />
+    <Compile Include="Modelo\Conceptos.cs" />
     <Compile Include="Modelo\CondicionTributaria.cs" />
     <Compile Include="Modelo\Empleado.cs" />
     <Compile Include="Modelo\LineaVenta.cs" />
     <Compile Include="Modelo\Marca.cs" />
     <Compile Include="Modelo\Producto.cs" />
+    <Compile Include="Modelo\TipoComprobante.cs" />
+    <Compile Include="Modelo\TipoDocumento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modelo\PuntoVenta.cs" />
     <Compile Include="Modelo\Rubro.cs" />
@@ -60,8 +63,11 @@
     <Compile Include="Modelo\TipoEmpleado.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Modelo\Venta.cs" />
+    <Compile Include="Servicios\AdapterAfipResponse.cs" />
     <Compile Include="Servicios\AdapterLogin.cs" />
+    <Compile Include="Servicios\CabComp.cs" />
     <Compile Include="Servicios\ControlText.cs" />
+    <Compile Include="Servicios\DetComp.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

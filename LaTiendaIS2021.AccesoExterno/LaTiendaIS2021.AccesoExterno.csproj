@@ -199,21 +199,6 @@
     <WCFMetadataStorage Include="Connected Services\WSLogin\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\WSLogin\LoginService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WSLogin\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WSLogin\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WSLogin\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\WSAfip\service.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -233,6 +218,18 @@
       <Project>{3f610824-7ebb-4982-a609-70e15a6ff499}</Project>
       <Name>LaTiendaIS2021.Dominio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WSLogin\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WSLogin\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WSLogin\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,6 @@
-﻿namespace LaTiendaIS2021.Dominio.Modelo_View
+﻿using LaTiendaIS2021.Dominio.Modelo;
+
+namespace LaTiendaIS2021.Dominio.Modelo_View
 {
     public class viewComprobante
     {
@@ -6,6 +8,8 @@
         public string Descripcion { get; set; }
         public decimal PrecioUnitario { get; set; }
         public decimal Subtotal { get; set; }
+
+        public TipoComprobante TipoComprobante { get; set; }
 
     }
 }

@@ -70,6 +70,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
                 view.Subtotal = (decimal)i.precio;
 
                 views.Add(view);
+                view = new viewComprobante();
             }
 
             var source = new BindingSource();
