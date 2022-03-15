@@ -11,6 +11,7 @@ namespace LaTiendaIS2021.Test
 
         }
         LineaVenta lineaVenta;
+        
         [TestMethod]
         public void Linea_De_Venta_Con_Cantidad_De_Producto_Mayor_A_Uno()
         {
@@ -23,7 +24,6 @@ namespace LaTiendaIS2021.Test
                 VentaId = 1
 
             };
-
 
             RepositorioTest.Datos.AgregarLineaVenta(lineaVenta);
 
@@ -38,14 +38,12 @@ namespace LaTiendaIS2021.Test
             //Configuracion y Ejecucion
             lineaVenta = RepositorioTest.Datos.BuscarLV(1);
 
-
             var precio = lineaVenta.Producto.PrecioVenta * lineaVenta.cantidad;
 
             //Ejecucion
             var calculo = lineaVenta.CalcularSubtotal();
             //Comprobacion
             Assert.AreEqual(expected: precio, calculo);
-
 
 
         }

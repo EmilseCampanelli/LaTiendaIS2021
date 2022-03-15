@@ -41,12 +41,14 @@ namespace LaTiendaIS2021.Dominio.Modelo
         }
 
 
-        
+
 
         public void SetStock(Stock stock, int Cantidad)
         {
             stock.cantidad -= Cantidad;
+
         }
+
 
     }
 }

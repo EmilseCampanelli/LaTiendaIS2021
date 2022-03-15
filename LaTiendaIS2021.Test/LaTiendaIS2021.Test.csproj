@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factory.cs" />
     <Compile Include="LineaVentaTest.cs" />
     <Compile Include="ProductoTest.cs" />
     <Compile Include="RepositorioTest.cs" />
@@ -66,6 +67,10 @@
       <Project>{3f610824-7ebb-4982-a609-70e15a6ff499}</Project>
       <Name>LaTiendaIS2021.Dominio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IntegrationTest\" />
+    <Folder Include="UnitTest\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -64,7 +64,6 @@ namespace LaTiendaIS2021.Dominio.Modelo
 
         public Cliente ClientDefault()
         {
-           
                 client.Id = 1;
                 client.Cuit = "11111111111";
                 client.CondicionTributariaId = 1;
@@ -77,10 +76,8 @@ namespace LaTiendaIS2021.Dominio.Modelo
                 client.Domicilio = "Consumidor Final";
                 client.RazonSocial = "Consumidor Final";
            
-
             return client;
            
-    
         }
       
     }

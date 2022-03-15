@@ -8,23 +8,35 @@ namespace LaTiendaIS2021.Test
     {
 
         [TestMethod]
+        public void CalcularTotal()
+        {
+            var venta = Factory.VentaFactory();
+
+            var calculo = venta.CalcularTotalVenta();
+
+            Assert.AreEqual(expected: 111726, calculo);
+
+        }
+        
+        [TestMethod]
         public void CalcularStock()
         {
-            Venta venta = new Venta()
-            {
-                id = 1,
-                ClienteId = 1,
-                LineaVenta = RepositorioTest.Datos.lineaVentas,
-                PuntoVentaId=1,    
-            
-            };
-
+            var venta = Factory.VentaFactory();
 
             venta.ConfirmarVenta();
 
+            foreach(var lv in venta.LineaVenta)
+            {
+                foreach(var s in lv.Producto.Stock)
+                {
+                    
+                }
+            }
 
+            Assert.IsTrue(true);
+            
 
         }
-
+        
     }
 }

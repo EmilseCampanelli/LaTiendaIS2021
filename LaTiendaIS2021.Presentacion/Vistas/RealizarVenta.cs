@@ -86,7 +86,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
                         btnAgregarCliente_Click(sender, e);
                         Venta = _presentador.GuardarVenta(venta);
                 }
-                MessageBox.Show(_adapterAfip.CAE);
+                MessageBox.Show("Esperando...");
 
                 _presentador.GenerarComprobante();
             }
@@ -266,6 +266,9 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             txtTotal.Text = _presentador.ActualizarTotalVenta().ToString();
         }
 
+        private void cbxTalle_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
