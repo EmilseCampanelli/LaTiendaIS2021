@@ -9,6 +9,7 @@ namespace LaTiendaIS2021.Test
 {
     public static class Factory
     {
+        //var randomNumber = new Random().Next(0, 100);
         public static PuntoVenta PuntoVentaFactory()
         {
             var pv = new PuntoVenta()
@@ -176,6 +177,15 @@ namespace LaTiendaIS2021.Test
             return stock;
         }
 
-
+        public static Usuario UsuarioFactory()
+        {
+            var user = new Usuario()
+            {
+                contraseña = "123",
+                Id = 1,
+                usuario = "Admin",
+            };
+            return user;
+        }
     }
 }

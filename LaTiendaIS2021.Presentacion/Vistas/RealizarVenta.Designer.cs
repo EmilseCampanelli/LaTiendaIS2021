@@ -127,6 +127,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.btnCancelarVenta.TabIndex = 1;
             this.btnCancelarVenta.Text = "Cancelar";
             this.btnCancelarVenta.UseVisualStyleBackColor = false;
+//            this.btnCancelarVenta.Click += new System.EventHandler(this.btnCancelarVenta_Click);
             // 
             // lblPuntoVenta
             // 
@@ -169,6 +170,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.btnVolver.TabIndex = 1;
             this.btnVolver.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnVolver.UseVisualStyleBackColor = true;
+            //this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // panel3
             // 
@@ -469,7 +471,7 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             this.cbxTalle.Name = "cbxTalle";
             this.cbxTalle.Size = new System.Drawing.Size(121, 21);
             this.cbxTalle.TabIndex = 14;
-            this.cbxTalle.SelectedIndexChanged += new System.EventHandler(this.cbxTalle_SelectedIndexChanged);
+           // this.cbxTalle.SelectedIndexChanged += new System.EventHandler(this.cbxTalle_SelectedIndexChanged);
             // 
             // btnBuscarProducto
             // 

@@ -266,9 +266,6 @@ namespace LaTiendaIS2021.Presentacion.Vistas
             txtTotal.Text = _presentador.ActualizarTotalVenta().ToString();
         }
 
-        private void cbxTalle_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

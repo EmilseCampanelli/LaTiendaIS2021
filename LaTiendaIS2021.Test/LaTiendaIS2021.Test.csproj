@@ -49,15 +49,16 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factory.cs" />
-    <Compile Include="LineaVentaTest.cs" />
-    <Compile Include="ProductoTest.cs" />
-    <Compile Include="RepositorioTest.cs" />
-    <Compile Include="VentaTest.cs" />
+    <Compile Include="UnitTest\Factory.cs" />
+    <Compile Include="UnitTest\LineaVentaTest.cs" />
+    <Compile Include="UnitTest\ProductoTest.cs" />
+    <Compile Include="UnitTest\RepositorioTest.cs" />
+    <Compile Include="UnitTest\VentaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Compile Include="UnitTest\SessionManagerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -67,10 +68,13 @@
       <Project>{3f610824-7ebb-4982-a609-70e15a6ff499}</Project>
       <Name>LaTiendaIS2021.Dominio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LaTiendaIS2021.Transversal\LaTiendaIS2021.Transversal.csproj">
+      <Project>{AB14F2EC-6C68-41F6-B001-2D8BA8E81AE5}</Project>
+      <Name>LaTiendaIS2021.Transversal</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IntegrationTest\" />
-    <Folder Include="UnitTest\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

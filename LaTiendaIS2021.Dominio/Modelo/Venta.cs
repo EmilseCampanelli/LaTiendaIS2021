@@ -24,9 +24,9 @@ namespace LaTiendaIS2021.Dominio.Modelo
         public int PuntoVentaId { get; set; }
      
         public int UsuarioId { get; set; }
-        public virtual Cliente Cliente { get; set; }
-        
-        public int ClienteId { get; set; }
+        public virtual Cliente Cliente { get; set; } 
+
+        public int ClienteId { get; set; } 
         public virtual PuntoVenta PuntoVenta { get; set; }
         public virtual Usuario Usuario { get; set; }
         
